@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="725.0" prefWidth="1330.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.addMovieComfirmControleur">
+    <Button layoutX="1204.0" layoutY="628.0" mnemonicParsing="false" onAction="#openAddMovieWindow" text="Cancel" />
+    <Button layoutX="1104.0" layoutY="628.0" mnemonicParsing="false" onAction="#PressAddBoutton" prefHeight="25.0" prefWidth="58.0" text="Add" />
+      <ImageView fx:id="movieImage" fitHeight="314.0" fitWidth="238.0" layoutX="49.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="titel" layoutX="286.0" layoutY="78.0" prefHeight="62.0" prefWidth="691.0" text="">
+         <font>
+            <Font size="40.0" />
+         </font>
+      </Label>
+      <Label fx:id="overview" layoutX="286.0" layoutY="178.0" lineSpacing="10.0" prefHeight="221.0" prefWidth="691.0" wrapText="true">
+      <font>
+         <Font size="15.0" />
+      </font></Label>
+      <Label fx:id="duration" layoutX="90.0" layoutY="354.0" prefHeight="36.0" prefWidth="124.0" />
+</AnchorPane>
