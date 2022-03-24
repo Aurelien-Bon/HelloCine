@@ -38,6 +38,8 @@ public class AdminPannelControleur {
     public ListView<String> Saturday;
     public ListView<String> Sunday;
     private mainControleur MainControleur;
+    private filmshow session;
+
 
 
     public void setMainApp(mainControleur mainControleur)
@@ -50,12 +52,63 @@ public class AdminPannelControleur {
         {
             cinelist.getItems().add(i,this.MainControleur.Cinemas.getCinemas().get(i).getName());
         }
+        cinelist.getItems().add("+ Add Cinema");
+    }
+
+    private void removeSession(filmshow session) {
+        MainControleur.Cinemas.getCinemaByName(cinelist.getValue()).getMovieRooms(roomList.getValue()).removeMovieShow(session);
+    }
+
+    private void afficheSession(filmshow session) {
+        if(session!=null)
+        {
+            MainControleur.OpenSeanceView(session);
+        }
+    }
+    private filmshow createSession(String day,int hour,String salleName,int salleid)
+    {
+        String hours;
+        switch (hour)
+        {
+            case 0:
+                hours="10h";
+                break;
+            case 1:
+                hours="13h";
+                break;
+            case 2:
+                hours="16h";
+                break;
+            case 3:
+                hours="19h";
+                break;
+            case 4:
+                hours="22h";
+                break;
+            default:
+                hours="null";
+        }
+        filmshow session=new filmshow(day,hours,salleName,salleid);
+        return session;
+
     }
 
     public void selectCinema()
     {
-        loadCinema();
-        loadMovieRoom();
+        if(!cinelist.getValue().equals("+ Add Cinema"))
+        {
+            loadCinema();
+            loadMovieRoom();
+        }
+        else
+        {
+            addCinema();
+        }
+
+    }
+
+    private void addCinema() {
+        MainControleur.OpenaddCinema();
     }
 
     public void loadCinema() {
@@ -147,9 +200,38 @@ public class AdminPannelControleur {
                 }
             }
         }
+        roomList.getItems().add("+ addMovieRoom");
+    }
+    public void loadRoom()
+    {
+        if(roomList.getValue()!=null)
+        {
+            if (!roomList.getValue().equals("+ addMovieRoom")) {
+                loadRoomShedule();
+            } else {
+                addMovieRoom();
+            }
+        }
+    }
+
+    private void addMovieRoom() {
+        MainControleur.OpenaddMovieRoom(cinelist.getValue());
     }
 
     public void loadRoomShedule() {
+
+        ContextMenu contextMenu1 = new ContextMenu();
+        ContextMenu contextMenu2 = new ContextMenu();
+        MenuItem menuItem1 = new MenuItem("Add session");
+        menuItem1.setOnAction(event -> afficheSession(session));
+        contextMenu2.getItems().setAll(menuItem1);
+        MenuItem menuItem2 = new MenuItem("Edit session");
+        menuItem2.setOnAction(event -> afficheSession(session));
+        MenuItem menuItem3 = new MenuItem("Remouve Session");
+        menuItem3.setOnAction(event -> removeSession(session));
+        contextMenu1.getItems().setAll(menuItem2,menuItem3);
+
+
         String cine = cinelist.getValue();
         String room = roomList.getValue();
         MovieRoom movieRoom = null;
@@ -163,100 +245,198 @@ public class AdminPannelControleur {
             }
         }
         Monday.getItems().clear();
-        Monday.getItems().add("No sceance");
-        Monday.getItems().add("No sceance");
-        Monday.getItems().add("No sceance");
-        Monday.getItems().add("No sceance");
-        Monday.getItems().add("No sceance");
         Tuesday.getItems().clear();
-        Tuesday.getItems().add("No sceance");
-        Tuesday.getItems().add("No sceance");
-        Tuesday.getItems().add("No sceance");
-        Tuesday.getItems().add("No sceance");
-        Tuesday.getItems().add("No sceance");
         Wednesday.getItems().clear();
-        Wednesday.getItems().add("No sceance");
-        Wednesday.getItems().add("No sceance");
-        Wednesday.getItems().add("No sceance");
-        Wednesday.getItems().add("No sceance");
-        Wednesday.getItems().add("No sceance");
         Thursday.getItems().clear();
-        Thursday.getItems().add("No sceance");
-        Thursday.getItems().add("No sceance");
-        Thursday.getItems().add("No sceance");
-        Thursday.getItems().add("No sceance");
-        Thursday.getItems().add("No sceance");
         Friday.getItems().clear();
-        Friday.getItems().add("No sceance");
-        Friday.getItems().add("No sceance");
-        Friday.getItems().add("No sceance");
-        Friday.getItems().add("No sceance");
-        Friday.getItems().add("No sceance");
         Saturday.getItems().clear();
-        Saturday.getItems().add("No sceance");
-        Saturday.getItems().add("No sceance");
-        Saturday.getItems().add("No sceance");
-        Saturday.getItems().add("No sceance");
-        Saturday.getItems().add("No sceance");
         Sunday.getItems().clear();
-        Sunday.getItems().add("No sceance");
-        Sunday.getItems().add("No sceance");
-        Sunday.getItems().add("No sceance");
-        Sunday.getItems().add("No sceance");
-        Sunday.getItems().add("No sceance");
-        assert movieRoom != null;
-        int daynb = 0;
+        for(int i=0;i<5;i++)
+        {
+            Monday.getItems().add("No sceance");
+            Tuesday.getItems().add("No sceance");
+            Wednesday.getItems().add("No sceance");
+            Thursday.getItems().add("No sceance");
+            Friday.getItems().add("No sceance");
+            Saturday.getItems().add("No sceance");
+            Sunday.getItems().add("No sceance");
+        }
         int hoursnb = 0;
-        for (var elem : movieRoom.getAllMovieshow()) {
-            String text="Movie : "+elem.getMouvie().getName()+"\n Duration: "+elem.getMouvie().getDuration()+"\n Place left: "+elem.getPlaceTaken();
-            if(elem.getHour().equals("10h"))
-            {
-                hoursnb=0;
-            }
-            if(elem.getHour().equals("13h"))
-            {
-                hoursnb=1;
-            }
-            if(elem.getHour().equals("16h"))
-            {
-                hoursnb=2;
-            }
-            if(elem.getHour().equals("19h"))
-            {
-                hoursnb=3;
-            }
-            if(elem.getHour().equals("22h"))
-            {
-                hoursnb=4;
-            }
+        if(movieRoom!=null)
+        {
+            for (var elem : movieRoom.getAllMovieshow()) {
+                String titleText=elem.getMouvie().getName();
+                if(titleText.length()>17)
+                {
+                    titleText=titleText.substring(0,14)+"...";
+                }
+                String text="Movie : "+titleText+"\nDuration: "+elem.getMouvie().getDuration()+"\nPlace left: "+elem.getPlaceTaken()+"\nPrice: "+elem.getPrice();
+                if(elem.getHour().equals("10h"))
+                {
+                    hoursnb=0;
+                }
+                if(elem.getHour().equals("13h"))
+                {
+                    hoursnb=1;
+                }
+                if(elem.getHour().equals("16h"))
+                {
+                    hoursnb=2;
+                }
+                if(elem.getHour().equals("19h"))
+                {
+                    hoursnb=3;
+                }
+                if(elem.getHour().equals("22h"))
+                {
+                    hoursnb=4;
+                }
 
-            if (elem.getDay().equals("Monday")) {
-                Monday.getItems().set(hoursnb,text);
-            }
-            if (elem.getDay().equals("Tuesday")) {
-                Tuesday.getItems().set(hoursnb,text);
-            }
-            if (elem.getDay().equals("Wednesday")) {
-                Wednesday.getItems().set(hoursnb,text);
-            }
-            if (elem.getDay().equals("Thursday")) {
-                Thursday.getItems().set(hoursnb,text);
-            }
-            if (elem.getDay().equals("Friday")) {
-                Friday.getItems().set(hoursnb,text);
-            }
-            if (elem.getDay().equals("Saturday")) {
-                Saturday.getItems().set(hoursnb,text);
-            }
-            if (elem.getDay().equals("Sunday")) {
-                Sunday.getItems().set(hoursnb,text);
+                if (elem.getDay().equals("Monday")) {
+                    Monday.getItems().set(hoursnb,text);
+                }
+                if (elem.getDay().equals("Tuesday")) {
+                    Tuesday.getItems().set(hoursnb,text);
+                }
+                if (elem.getDay().equals("Wednesday")) {
+                    Wednesday.getItems().set(hoursnb,text);
+                }
+                if (elem.getDay().equals("Thursday")) {
+                    Thursday.getItems().set(hoursnb,text);
+                }
+                if (elem.getDay().equals("Friday")) {
+                    Friday.getItems().set(hoursnb,text);
+                }
+                if (elem.getDay().equals("Saturday")) {
+                    Saturday.getItems().set(hoursnb,text);
+                }
+                if (elem.getDay().equals("Sunday")) {
+                    Sunday.getItems().set(hoursnb,text);
+                }
             }
         }
+
         Monday.setOnMouseClicked(event -> {
-            if (event.getClickCount() == 2)
+            if(Monday.getSelectionModel().getSelectedItem().equals("No sceance"))
             {
-                //filmshow=movieRoom.getMovieShow()
+                if(event.getButton() == MouseButton.SECONDARY)
+                {
+                    session=createSession("Monday",Monday.getSelectionModel().getSelectedIndex(),roomList.getValue(),this.MainControleur.Cinemas.getCinemaByName(cinelist.getValue()).getMovieRooms(roomList.getValue()).getId());
+                    contextMenu2.show(MainControleur.getStage(),event.getSceneX()+300,event.getSceneY()+50);
+                }
+            }else
+            {
+                if(event.getButton() == MouseButton.SECONDARY)
+                {
+                    session=this.MainControleur.Cinemas.getCinemaByName(cinelist.getValue()).getMovieRooms(roomList.getSelectionModel().getSelectedItem()).getSpecialMovieShow("Monday",Monday.getSelectionModel().getSelectedIndex());
+                    contextMenu1.show(MainControleur.getStage(),event.getSceneX()+300,event.getSceneY()+50);
+                }
             }
+        });
+        Tuesday.setOnMouseClicked(event -> {
+            if(Tuesday.getSelectionModel().getSelectedItem().equals("No sceance"))
+            {
+                if(event.getButton() == MouseButton.SECONDARY)
+                {
+                    session=createSession("Tuesday",Tuesday.getSelectionModel().getSelectedIndex(),roomList.getValue(),this.MainControleur.Cinemas.getCinemaByName(cinelist.getValue()).getMovieRooms(roomList.getValue()).getId());
+                    contextMenu2.show(MainControleur.getStage(),event.getSceneX()+300,event.getSceneY()+50);
+                }
+            }else
+            {
+                if(event.getButton() == MouseButton.SECONDARY)
+                {
+                    session=this.MainControleur.Cinemas.getCinemaByName(cinelist.getValue()).getMovieRooms(roomList.getSelectionModel().getSelectedItem()).getSpecialMovieShow("Tuesday",Tuesday.getSelectionModel().getSelectedIndex());
+                    contextMenu1.show(MainControleur.getStage(),event.getSceneX()+300,event.getSceneY()+50);
+                }
+            }
+        });
+        Wednesday.setOnMouseClicked(event -> {
+            if(Wednesday.getSelectionModel().getSelectedItem().equals("No sceance"))
+            {
+                if(event.getButton() == MouseButton.SECONDARY)
+                {
+                    session=createSession("Wednesday",Wednesday.getSelectionModel().getSelectedIndex(),roomList.getValue(),this.MainControleur.Cinemas.getCinemaByName(cinelist.getValue()).getMovieRooms(roomList.getValue()).getId());
+                    contextMenu2.show(MainControleur.getStage(),event.getSceneX()+300,event.getSceneY()+50);
+                }
+            }else
+            {
+                if(event.getButton() == MouseButton.SECONDARY)
+                {
+                    session=this.MainControleur.Cinemas.getCinemaByName(cinelist.getValue()).getMovieRooms(roomList.getSelectionModel().getSelectedItem()).getSpecialMovieShow("Wednesday",Wednesday.getSelectionModel().getSelectedIndex());
+                    contextMenu1.show(MainControleur.getStage(),event.getSceneX()+300,event.getSceneY()+50);
+                }
+            }
+        });
+        Thursday.setOnMouseClicked(event -> {
+            if(Thursday.getSelectionModel().getSelectedItem().equals("No sceance"))
+            {
+                if(event.getButton() == MouseButton.SECONDARY)
+                {
+                    session=createSession("Thursday",Thursday.getSelectionModel().getSelectedIndex(),roomList.getValue(),this.MainControleur.Cinemas.getCinemaByName(cinelist.getValue()).getMovieRooms(roomList.getValue()).getId());
+                    contextMenu2.show(MainControleur.getStage(),event.getSceneX()+300,event.getSceneY()+50);
+                }
+            }else
+            {
+                if(event.getButton() == MouseButton.SECONDARY)
+                {
+                    session=this.MainControleur.Cinemas.getCinemaByName(cinelist.getValue()).getMovieRooms(roomList.getSelectionModel().getSelectedItem()).getSpecialMovieShow("Thursday",Thursday.getSelectionModel().getSelectedIndex());
+                    contextMenu1.show(MainControleur.getStage(),event.getSceneX()+300,event.getSceneY()+50);
+                }
+            }
+        });
+        Friday.setOnMouseClicked(event -> {
+            if(Friday.getSelectionModel().getSelectedItem().equals("No sceance"))
+            {
+                if(event.getButton() == MouseButton.SECONDARY)
+                {
+                    session=createSession("Friday",Friday.getSelectionModel().getSelectedIndex(),roomList.getValue(),this.MainControleur.Cinemas.getCinemaByName(cinelist.getValue()).getMovieRooms(roomList.getValue()).getId());
+                    contextMenu2.show(MainControleur.getStage(),event.getSceneX()+300,event.getSceneY()+50);
+                }
+            }else
+            {
+                if(event.getButton() == MouseButton.SECONDARY)
+                {
+                    session=this.MainControleur.Cinemas.getCinemaByName(cinelist.getValue()).getMovieRooms(roomList.getSelectionModel().getSelectedItem()).getSpecialMovieShow("Friday",Friday.getSelectionModel().getSelectedIndex());
+                    contextMenu1.show(MainControleur.getStage(),event.getSceneX()+300,event.getSceneY()+50);
+                }
+            }
+
+        });
+        Saturday.setOnMouseClicked(event -> {
+            if(Saturday.getSelectionModel().getSelectedItem().equals("No sceance"))
+            {
+                if(event.getButton() == MouseButton.SECONDARY)
+                {
+                    session=createSession("Saturday",Saturday.getSelectionModel().getSelectedIndex(),roomList.getValue(),this.MainControleur.Cinemas.getCinemaByName(cinelist.getValue()).getMovieRooms(roomList.getValue()).getId());
+                    contextMenu2.show(MainControleur.getStage(),event.getSceneX()+300,event.getSceneY()+50);
+                }
+            }else
+            {
+                if(event.getButton() == MouseButton.SECONDARY)
+                {
+                    session=this.MainControleur.Cinemas.getCinemaByName(cinelist.getValue()).getMovieRooms(roomList.getSelectionModel().getSelectedItem()).getSpecialMovieShow("Saturday",Saturday.getSelectionModel().getSelectedIndex());
+                    contextMenu1.show(MainControleur.getStage(),event.getSceneX()+300,event.getSceneY()+50);
+                }
+            }
+
+        });
+        Sunday.setOnMouseClicked(event -> {
+            if(Sunday.getSelectionModel().getSelectedItem().equals("No sceance"))
+            {
+                if(event.getButton() == MouseButton.SECONDARY)
+                {
+                    session=createSession("Sunday",Sunday.getSelectionModel().getSelectedIndex(),roomList.getValue(),this.MainControleur.Cinemas.getCinemaByName(cinelist.getValue()).getMovieRooms(roomList.getValue()).getId());
+                    contextMenu2.show(MainControleur.getStage(),event.getSceneX()+300,event.getSceneY()+50);
+                }
+            }else
+            {
+                if(event.getButton() == MouseButton.SECONDARY)
+                {
+                    session=this.MainControleur.Cinemas.getCinemaByName(cinelist.getValue()).getMovieRooms(roomList.getSelectionModel().getSelectedItem()).getSpecialMovieShow("Sunday",Sunday.getSelectionModel().getSelectedIndex());
+                    contextMenu1.show(MainControleur.getStage(),event.getSceneX()+300,event.getSceneY()+50);
+                }
+            }
+
         });
     }
     public void openSeanceView()
@@ -267,5 +447,9 @@ public class AdminPannelControleur {
     public void openAddMovieWindow()
     {
         MainControleur.openAdminPanel();
+    }
+
+    public void quitbutton() {
+        MainControleur.HelloCine();
     }
 }

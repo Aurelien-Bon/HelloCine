@@ -28,4 +28,19 @@ public class Cinemas {
     public List<Cinema> getCinemas() {
         return cinemas;
     }
+    public Cinema getCinemaByName(String name)
+    {
+        for(var elem:cinemas)
+        {
+            if(elem.getName().equals(name))
+            {
+                return elem;
+            }
+        }
+        return null;
+    }
+
+    public void addCinema(Cinema c) {
+        cinemas.add(c);
+    }
 }

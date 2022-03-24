@@ -36,7 +36,6 @@ public class Mysqlc {
                 a.add(Integer.toString(rs.getInt(1)));
                 a.add(rs.getString(2));
                 a.add(rs.getString(3));
-                a.add(Integer.toString(rs.getInt(4)));
                 result.add(a);
             }
             conn.close();
@@ -53,8 +52,9 @@ public class Mysqlc {
         return result;
     }
 
-    public void MysqlcCinemaAdd(Cinema cinema)
+    public int MysqlcCinemaAdd(String name,String adress)
     {
+        int id=0;
         // TODO code application logic here
         Connection conn = null;
         ResultSet rs=null;
@@ -63,7 +63,13 @@ public class Mysqlc {
             // create a connection to the database
             conn = DriverManager.getConnection(url, user, password);
             stmt = conn.createStatement();
-            stmt.executeUpdate("INSERT INTO `cinema` (`id`, `Name`, `Adress`, `Room`) VALUES (NULL, '"+cinema.getName()+"', '"+cinema.getAdress()+"', '3');");
+            stmt.executeUpdate("INSERT INTO `cinema` (`id`, `Name`, `Adress`) VALUES (NULL, '"+name+"', '"+adress+"');");
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery("SELECT id FROM `cinema` WHERE `Name`=\""+name+"\" AND `Adress` = \""+adress+"\";");
+            while(rs.next())
+            {
+                id = rs.getInt(1);
+            }
             conn.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -75,6 +81,7 @@ public class Mysqlc {
                 System.out.println(ex.getMessage());
             }
         }
+        return id;
     }
 
 
@@ -97,6 +104,7 @@ public class Mysqlc {
                 a.add(rs.getString(4));
                 a.add(rs.getString(5));
                 a.add(Integer.toString(rs.getInt(6)));
+                a.add(Integer.toString(rs.getInt(7)));
                 result.add(a);
             }
             conn.close();
@@ -122,7 +130,7 @@ public class Mysqlc {
             // create a connection to the database
             conn = DriverManager.getConnection(url, user, password);
             stmt = conn.createStatement();
-            stmt.executeUpdate("INSERT INTO `filmshow` (`id`, `SalleID`, `MovieID`, `Day`, `Hours`, `placeTaken`) VALUES (NULL, '"+filmshow.getSalleId()+"', '"+filmshow.getMouvie().getId()+"', '"+filmshow.getDay()+"', '"+filmshow.getHour()+"', '"+filmshow.getPlaceTaken()+"');");
+            stmt.executeUpdate("INSERT INTO `filmshow` (`id`, `SalleID`, `MovieID`, `Day`, `Hours`, `placeTaken`,`price`) VALUES (NULL, '"+filmshow.getSalleId()+"', '"+filmshow.getMouvie().getId()+"', '"+filmshow.getDay()+"', '"+filmshow.getHour()+"', '"+filmshow.getPlaceTaken()+"', '"+filmshow.getPrice()+"');");
             conn.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -230,4 +238,58 @@ public class Mysqlc {
         return result;
     }
 
+    public int MysqlcaddMovieRoom(String name,int nbplace,int idCinema)
+    {
+        int id=0;
+        // TODO code application logic here
+        Connection conn = null;
+        ResultSet rs=null;
+
+        try {
+            // create a connection to the database
+            conn = DriverManager.getConnection(url, user, password);
+            stmt = conn.createStatement();
+            stmt.executeUpdate("INSERT INTO `movieroom` (`id`, `Name`, `numbrePlace`, `idCinema`) VALUES (NULL, '"+name+"', '"+nbplace+"', '"+idCinema+"');");
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery("SELECT id FROM `movieroom` WHERE `Name`=\""+name+"\" AND `idCinema`=\""+idCinema+"\";");
+            while(rs.next())
+            {
+                id = rs.getInt(1);
+            }
+            conn.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                if (conn != null)
+                    conn.close();
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
+        return id;
+    }
+
+
+    public void executeQuery(String query)
+    {
+        Connection conn = null;
+        ResultSet rs=null;
+        try {
+            // create a connection to the database
+            conn = DriverManager.getConnection(url, user, password);
+            stmt = conn.createStatement();
+            stmt.executeUpdate(query);
+            conn.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                if (conn != null)
+                    conn.close();
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
+    }
 }

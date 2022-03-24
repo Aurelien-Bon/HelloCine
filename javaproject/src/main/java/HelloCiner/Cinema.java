@@ -12,6 +12,15 @@ public class Cinema {
     private List<MovieRoom>movieRooms;
     private String adress;
     public Collection Collection;
+    public Cinema(String name,String adress)
+    {
+        this.name=name;
+        this.adress=adress;
+        this.movieRooms=new ArrayList<>();
+        this.Collection=new Collection();
+        Mysqlc mysqlc=new Mysqlc();
+        this.cinemaId= mysqlc.MysqlcCinemaAdd(name,adress);
+    }
     public Cinema(int cinemaId, String name,String adress)
     {
         this.cinemaId=cinemaId;
@@ -21,13 +30,19 @@ public class Cinema {
         this.Collection.load(cinemaId);
         movieRooms=new ArrayList<>();
     }
-
     public String getName() {
         return name;
     }
 
-    public MovieRoom getMovieRooms(int i) {
-        return movieRooms.get(i);
+    public MovieRoom getMovieRooms(String name) {
+        for(var elem:movieRooms)
+        {
+            if(elem.getName().equals(name))
+            {
+                return elem;
+            }
+        }
+        return null;
     }
 
     public String getAdress() {
@@ -59,5 +74,9 @@ public class Cinema {
 
     public List<MovieRoom> getAllMovieRooms() {
         return this.movieRooms;
+    }
+
+    public void addMovieRoom(MovieRoom movieRoom) {
+        this.movieRooms.add(movieRoom);
     }
 }

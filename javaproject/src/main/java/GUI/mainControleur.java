@@ -9,15 +9,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import org.w3c.dom.events.MouseEvent;
 
 import java.io.IOException;
+import java.util.List;
 
 public class mainControleur {
     public MenuBar menubar;
@@ -28,6 +28,7 @@ public class mainControleur {
     private Parent root;
     private BorderPane rootLayout;
     public Cinemas Cinemas;
+
 
     public void init() {
         try {
@@ -42,14 +43,6 @@ public class mainControleur {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        menubar=new MenuBar();
-        MenuItem menuItem = new MenuItem();
-        menuItem.setText("Admin Pannel");
-        menuItem.setOnAction(event -> openAdminPanel());
-        menu = new Menu();
-        menu.getItems().add(menuItem);
-        menu.setText("Admin");
-        menubar.getMenus().setAll(menu);
         this.Cinemas=new Cinemas();
         this.Cinemas.load();
 
@@ -85,7 +78,7 @@ public class mainControleur {
             ScrollPane scroll = new ScrollPane();
             scroll.setContent(addMovie);
             rootLayout.setCenter(scroll);
-            stage.setTitle("Hello cine - Add Movie");
+            stage.setTitle("HelloCine - Add Movie");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -103,7 +96,7 @@ public class mainControleur {
             ScrollPane scroll = new ScrollPane();
             scroll.setContent(AdminPannel);
             rootLayout.setCenter(scroll);
-            stage.setTitle("Hello cine - Admin Pannel");
+            stage.setTitle("HelloCine - Admin Pannel");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -133,16 +126,72 @@ public class mainControleur {
 
     public void OpenSeanceView(filmshow movieRoom) {
         try {
-            // Load person overview.
-            FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("SeanceView.fxml"));
-            AnchorPane personOverview = (AnchorPane) loader.load();
+            // Load the fxml file and create a new stage for the popup dialog.
+            FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("SceanceView.fxml"));
+            AnchorPane page = loader.load();
 
+            // Create the dialog Stage.
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Edit Session");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            // Set the person into the controller.
             SceanceViewControleur controller = loader.getController();
             controller.setMainApp(this);
+            controller.init(movieRoom);
+            controller.setDialogStage(dialogStage);
+            // Show the dialog and wait until the user closes it
+            dialogStage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void OpenaddCinema() {
+        try {
+            // Load the fxml file and create a new stage for the popup dialog.
+            FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("addCinema.fxml"));
+            AnchorPane page = loader.load();
+
+            // Create the dialog Stage.
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("HelloCine - Add new Cinema");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            // Set the person into the controller.
+            AddCinemaControleur controller = loader.getController();
+            controller.setMainApp(this);
             controller.init();
-            // Set person overview into the center of root layout.
-            rootLayout.setCenter(personOverview);
-            stage.setTitle("HelloCine - SceanceView");
+            controller.setDialogStage(dialogStage);
+            // Show the dialog and wait until the user closes it
+            dialogStage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void OpenaddMovieRoom(String cinename) {
+        try {
+            // Load the fxml file and create a new stage for the popup dialog.
+            FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("addMovieRoom.fxml"));
+            AnchorPane page = loader.load();
+
+            // Create the dialog Stage.
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("HelloCine - Add new Cinema Room");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            // Set the person into the controller.
+            AddMovieRoomControler controller = loader.getController();
+            controller.setMainApp(this);
+            controller.init(cinename);
+            controller.setDialogStage(dialogStage);
+            // Show the dialog and wait until the user closes it
+            dialogStage.showAndWait();
         } catch (IOException e) {
             e.printStackTrace();
         }

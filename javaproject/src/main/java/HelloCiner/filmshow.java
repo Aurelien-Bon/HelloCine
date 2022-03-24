@@ -9,15 +9,27 @@ public class filmshow {
     private String Day;
     private String hour;
     private Movie movie;
-    private int salleId;
+    private String salleName;
     private int placeTaken;
-    public filmshow(String day,String hour,Movie mouvie,int placeTaken ,int salleid)
+    private int price;
+    private int salleId;
+    public filmshow(String day,String hour,Movie mouvie,int placeTaken ,String salleName,int salleId,int price)
     {
         this.Day=day;
         this.hour=hour;
         this.movie=mouvie;
         this.placeTaken=placeTaken;
-        this.salleId=salleid;
+        this.salleName=salleName;
+        this.salleId=salleId;
+        this.price=price;
+    }
+
+    public filmshow(String day,String hour,String SalleName,int salleId)
+    {
+        this.salleName=SalleName;
+        this.Day=day;
+        this.hour=hour;
+        this.salleId=salleId;
     }
 
     public void setMouvie(Movie m) {
@@ -25,6 +37,10 @@ public class filmshow {
     }
     public Movie getMouvie() {
         return movie;
+    }
+
+    public String getSalleName() {
+        return salleName;
     }
 
     public String getDay() {
@@ -45,5 +61,21 @@ public class filmshow {
 
     public int getSalleId() {
         return salleId;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public void setSalleId(int salleId) {
+        this.salleId = salleId;
+    }
+
+    public void setNbPlace(int capacity) {
+        this.placeTaken=capacity;
     }
 }

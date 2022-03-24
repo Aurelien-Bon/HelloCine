@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="214.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AddMovieRoomControler">
+    <children>
+        <GridPane layoutY="20.0" prefHeight="150.0" prefWidth="500.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <Label alignment="CENTER" prefHeight="50.0" prefWidth="250.0" text="Cinema name:">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+                <Label fx:id="cinename" maxWidth="240.0" prefHeight="39.0" GridPane.columnIndex="1">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+                <Label alignment="CENTER" prefHeight="50.0" prefWidth="240.0" text="    Room Name:" textAlignment="CENTER" GridPane.rowIndex="1">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+                <Label fx:id="roomname" maxWidth="240.0" prefHeight="39.0" prefWidth="230.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+                <Label alignment="CENTER" prefHeight="50.0" prefWidth="240.0" text="Numbre place:" textAlignment="CENTER" GridPane.rowIndex="2">
+                    <font>
+                        <Font size="18.0" />
+                    </font></Label>
+                <TextField fx:id="cineplace" maxWidth="240.0" prefHeight="39.0" prefWidth="230.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                    <font>
+                        <Font size="18.0" />
+                    </font></TextField>
+            </children>
+        </GridPane>
+        <Button layoutX="250.0" layoutY="170.0" mnemonicParsing="false" onAction="#addButon" prefHeight="30.0" prefWidth="110.0" text="Add" />
+        <Button layoutX="376.0" layoutY="170.0" mnemonicParsing="false" onAction="#cancelButon" prefHeight="30.0" prefWidth="110.0" text="Cancel" />
+    </children>
+
+</AnchorPane>
