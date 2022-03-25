@@ -37,6 +37,7 @@ public class AdminPannelControleur {
     public ListView<String> Friday;
     public ListView<String> Saturday;
     public ListView<String> Sunday;
+    public Button reload;
     private mainControleur MainControleur;
     private filmshow session;
 
@@ -53,6 +54,12 @@ public class AdminPannelControleur {
             cinelist.getItems().add(i,this.MainControleur.Cinemas.getCinemas().get(i).getName());
         }
         cinelist.getItems().add("+ Add Cinema");
+        Image img=new Image("http://image.noelshack.com/fichiers/2022/12/4/1648143237-download.png");
+        ImageView imgv= new ImageView(img);
+        imgv.setFitHeight(40);
+        imgv.setFitWidth(40);
+        reload.setGraphic(imgv);
+        reload.setMaxSize(40,40);
     }
 
     private void removeSession(filmshow session) {
@@ -451,5 +458,9 @@ public class AdminPannelControleur {
 
     public void quitbutton() {
         MainControleur.HelloCine();
+    }
+
+    public void reloadPage(ActionEvent event) {
+        MainControleur.openAdminPanel();
     }
 }
