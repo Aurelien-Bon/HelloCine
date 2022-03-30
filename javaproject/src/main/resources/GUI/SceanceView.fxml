@@ -72,11 +72,14 @@
                </children></FlowPane>
             <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <children>
-                  <TextArea fx:id="price" prefHeight="40.0" prefWidth="287.0" />
+                  <TextField fx:id="price" prefHeight="40.0" prefWidth="287.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font></TextField>
                </children></FlowPane>
          </children>
       </GridPane>
-      <Button layoutX="249.0" layoutY="346.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="105.0" text="ADD" onAction="#onAddButton"/>
-       <Button layoutX="381.0" layoutY="346.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="105.0" text="Cancel" onAction="#onCancelButton"/>
+      <Button layoutX="249.0" layoutY="346.0" mnemonicParsing="false" onAction="#onAddButton" prefHeight="36.0" prefWidth="105.0" text="ADD" />
+       <Button layoutX="381.0" layoutY="346.0" mnemonicParsing="false" onAction="#onCancelButton" prefHeight="36.0" prefWidth="105.0" text="Cancel" />
    </children>
 </AnchorPane>

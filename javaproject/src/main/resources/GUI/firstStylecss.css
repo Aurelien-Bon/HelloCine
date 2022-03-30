@@ -6,3 +6,6 @@
     -fx-stroke-dash-offset: 6;
     -fx-stroke-line-cap: butt;
 }
+.my-button{
+    -fx-font-size: 12px;
+}

@@ -5,11 +5,17 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.media.*;
+import javafx.scene.web.*;
 
 import java.io.IOException;
 
 
 public class addMovieComfirmControleur {
+    public AnchorPane fond;
+    public MediaView trailer;
+    public WebView webView;
     private mainControleur mainControleur;
     @FXML
     public ImageView movieImage;
@@ -52,7 +58,9 @@ public class addMovieComfirmControleur {
                        elem.getCollection().addMovie(Movie);
                 }
             }
+            webView.getEngine().load(null);
             mainControleur.openAdminPanel();
+
         }
         else
         {
@@ -67,5 +75,6 @@ public class addMovieComfirmControleur {
         titel.setText(this.Movie.getName());
         overview.setText(this.Movie.getOverview());
         duration.setText(this.Movie.getDuration());
+        webView.getEngine().load(this.Movie.getTraileurLink());
     }
 }

@@ -2,9 +2,11 @@ package GUI;
 
 import MovieGestion.Movie;
 import info.movito.themoviedbapi.TmdbApi;
+import info.movito.themoviedbapi.TmdbMovies;
 import info.movito.themoviedbapi.TmdbSearch;
 import info.movito.themoviedbapi.model.MovieDb;
 import info.movito.themoviedbapi.model.Multi;
+import info.movito.themoviedbapi.model.Video;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
@@ -134,7 +136,10 @@ public class addMovieControleur {
                     h++;
                 }
                 String time = h +"h"+ min;
-                Movie movie=new Movie(mv.getId(), finalCinemaID, mv.getTitle(),mv.getOverview(), time,url);
+                TmdbMovies movies = new TmdbApi("6f4e9f91fcee70ab233126aaab13fc36").getMovies();
+                List<Video> path = movies.getVideos(mv.getId(), "");
+                String ytlink = "https://www.youtube.com/embed/"+ path.get(0).getKey();
+                Movie movie=new Movie(mv.getId(), finalCinemaID, mv.getTitle(),mv.getOverview(), time,url,ytlink);
                 MainControleur.openAddMovieComfirm(movie);
             }
         });

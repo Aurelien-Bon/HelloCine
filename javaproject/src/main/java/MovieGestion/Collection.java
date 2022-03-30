@@ -20,6 +20,10 @@ public class Collection {
         Mysqlc mysqlc=new Mysqlc();
         mysqlc.MysqlcMovieAdd(movie);
     }
+    public void setMovie(Movie movie)
+    {
+        this.Collection.add(movie);
+    }
     public Movie getMovie(String movieName)
     {
         for(var elem:Collection){
@@ -46,7 +50,7 @@ public class Collection {
         {
             if(Integer.parseInt(elem.get(0))==cinemaId)
             {
-                Movie m=new Movie(Integer.parseInt(elem.get(1)),Integer.parseInt(elem.get(0)), elem.get(2),elem.get(3),elem.get(4),elem.get(5));
+                Movie m=new Movie(Integer.parseInt(elem.get(1)),Integer.parseInt(elem.get(0)), elem.get(2),elem.get(3),elem.get(4),elem.get(5),elem.get(6));
                 this.Collection.add(m);
             }
 

@@ -165,6 +165,7 @@ public class Mysqlc {
                 a.add(rs.getString(5));
                 a.add(rs.getString(6));
                 a.add(rs.getString(7));
+                a.add(rs.getString(8));
                 result.add(a);
             }
             conn.close();
@@ -190,7 +191,7 @@ public class Mysqlc {
             // create a connection to the database
             conn = DriverManager.getConnection(url, user, password);
             stmt = conn.createStatement();
-            stmt.executeUpdate("INSERT INTO `movie` (`id`,`cinemaID`,`idtmdb`, `Title`, `Overview`, `Duration`, `MovieImageURl`) VALUES (NULL,'"+movie.getCinemaId()+"', '"+movie.getId()+"', '"+movie.getName()+"', '"+movie.getOverview()+"', '"+movie.getDuration()+"', '"+movie.getMovieImageUrl()+"');");
+            stmt.executeUpdate("INSERT INTO `movie` (`id`,`cinemaID`,`idtmdb`, `Title`, `Overview`, `Duration`, `MovieImageURl` ,`trailerUrl`) VALUES (NULL,'"+movie.getCinemaId()+"', '"+movie.getId()+"', '"+movie.getName()+"', '"+movie.getOverview()+"', '"+movie.getDuration()+"', '"+movie.getMovieImageUrl()+"', '"+movie.getTraileurLink()+"');");
             conn.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -280,6 +281,31 @@ public class Mysqlc {
             conn = DriverManager.getConnection(url, user, password);
             stmt = conn.createStatement();
             stmt.executeUpdate(query);
+            conn.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                if (conn != null)
+                    conn.close();
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
+    }
+
+
+
+
+    public void clear()
+    {
+        Connection conn = null;
+        ResultSet rs=null;
+        try {
+            // create a connection to the database
+            conn = DriverManager.getConnection(url, user, password);
+            stmt = conn.createStatement();
+            stmt.executeUpdate("DELETE FROM `movieroom` WHERE `idCinema` NOT IN (SELECT id FROM cinema WHERE 1); DELETE `filmshow` WHERE `SalleId` NOT IN (SELECT id FROM movieroom WHERE 1);");
             conn.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());

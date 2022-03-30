@@ -112,7 +112,7 @@ public class mainControleur {
 
             HelloCine controller = loader.getController();
             controller.setMainApp(this);
-            controller.init();
+            controller.init(true);
             // Set person overview into the center of root layout.
             rootLayout.setCenter(personOverview);
             stage.setTitle("HelloCine");
@@ -124,7 +124,7 @@ public class mainControleur {
         return stage;
     }
 
-    public void OpenSeanceView(filmshow movieRoom) {
+    public void OpenSeanceView(filmshow movieRoom, AdminPannelControleur apc) {
         try {
             // Load the fxml file and create a new stage for the popup dialog.
             FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("SceanceView.fxml"));
@@ -140,15 +140,14 @@ public class mainControleur {
             // Set the person into the controller.
             SceanceViewControleur controller = loader.getController();
             controller.setMainApp(this);
-            controller.init(movieRoom);
             controller.setDialogStage(dialogStage);
             // Show the dialog and wait until the user closes it
-            dialogStage.showAndWait();
+            controller.init(movieRoom,apc);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    public void OpenaddCinema() {
+    public void OpenaddCinema(AdminPannelControleur apc) {
         try {
             // Load the fxml file and create a new stage for the popup dialog.
             FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("addCinema.fxml"));
@@ -164,15 +163,15 @@ public class mainControleur {
             // Set the person into the controller.
             AddCinemaControleur controller = loader.getController();
             controller.setMainApp(this);
-            controller.init();
+            controller.init(apc);
             controller.setDialogStage(dialogStage);
-            // Show the dialog and wait until the user closes it
             dialogStage.showAndWait();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    public void OpenaddMovieRoom(String cinename) {
+    public void OpenaddMovieRoom(String cinename,AdminPannelControleur apc) {
         try {
             // Load the fxml file and create a new stage for the popup dialog.
             FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("addMovieRoom.fxml"));
@@ -188,7 +187,7 @@ public class mainControleur {
             // Set the person into the controller.
             AddMovieRoomControler controller = loader.getController();
             controller.setMainApp(this);
-            controller.init(cinename);
+            controller.init(cinename,apc);
             controller.setDialogStage(dialogStage);
             // Show the dialog and wait until the user closes it
             dialogStage.showAndWait();

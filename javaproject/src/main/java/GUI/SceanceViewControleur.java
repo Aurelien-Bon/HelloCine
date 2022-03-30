@@ -3,29 +3,34 @@ package GUI;
 import HelloCiner.Cinema;
 import HelloCiner.filmshow;
 import MovieGestion.Collection;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class SceanceViewControleur {
     public Label seancetitle;
     public Label CinemaMovieRoom;
     public ChoiceBox<String> CollectionList;
-    public TextArea price;
+    public TextField price;
     private mainControleur MainControleur;
     private filmshow movieRoom;
     private Cinema cinema;
     private Stage dialogStage;
+    private AdminPannelControleur apc;
 
     public void setMainApp(mainControleur mainControleur) {
         this.MainControleur=mainControleur;
     }
     public void setDialogStage(Stage dialogStage){this.dialogStage=dialogStage;}
 
-    public void init(filmshow movieRoom) {
+    public void init(filmshow movieRoom,AdminPannelControleur apc) {
         this.movieRoom=movieRoom;
+        this.apc=apc;
         String title="Session of "+this.movieRoom.getDay()+" at "+this.movieRoom.getHour();
         seancetitle.setText(title);
         String cineMovie="";
@@ -46,6 +51,31 @@ public class SceanceViewControleur {
         {
             CollectionList.getItems().add(elem.getName());
         }
+        if(movieRoom.getMouvie() != null)
+        {
+            CollectionList.setValue(movieRoom.getMouvie().getName());
+            dialogStage.showAndWait();
+        }
+        else if(cinema.Collection.getMovieList().size()!=0)
+        {
+            CollectionList.setValue(CollectionList.getItems().get(0));
+            dialogStage.showAndWait();
+        }
+        else
+        {
+            MainControleur.openAddMovie(cinema.getName());
+            dialogStage.close();
+        }
+
+        price.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    price.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+            }
+        });
     }
     public void onCancelButton()
     {
@@ -70,5 +100,6 @@ public class SceanceViewControleur {
             }
         }
         dialogStage.close();
+        apc.setReload();
     }
 }

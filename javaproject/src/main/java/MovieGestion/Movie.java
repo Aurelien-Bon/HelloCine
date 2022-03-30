@@ -10,9 +10,11 @@ public class Movie {
     private String Duration;
     private String movieImageUrl;
     private Image MovieImage;
+    private String traileurUrl;
 
-    public Movie(int id,int CinemaId, String name,String overview,String duration,String movieImageUrl)
+    public Movie(int id,int CinemaId, String name,String overview,String duration,String movieImageUrl,String traileurUrl)
     {
+        this.traileurUrl=traileurUrl;
         this.CinemaId=CinemaId;
         this.Id=id;
         this.Name=name.replace("'"," ");
@@ -57,5 +59,9 @@ public class Movie {
 
     public String getMovieImageUrl() {
         return movieImageUrl;
+    }
+
+    public String getTraileurLink() {
+        return this.traileurUrl;
     }
 }

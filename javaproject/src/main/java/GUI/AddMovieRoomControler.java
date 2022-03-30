@@ -15,14 +15,16 @@ public class AddMovieRoomControler {
     public TextField cineplace;
     private mainControleur  mainControleur;
     private Stage dialogStage;
+    private AdminPannelControleur apc;
 
     public void setMainApp(GUI.mainControleur mainControleur) {
         this.mainControleur = mainControleur;
     }
     public void setDialogStage(Stage dialogStage){this.dialogStage=dialogStage;}
-    public void init(String cinename)
+    public void init(String cinename,AdminPannelControleur apc)
     {
         this.cinename.setText(cinename);
+        this.apc=apc;
         int newnumber=this.mainControleur.Cinemas.getCinemaByName(cinename).getAllMovieRooms().size()+1;
         String roomfullName = cinename +" MovieRoom "+ newnumber;
         this.roomname.setText(roomfullName);
@@ -41,6 +43,7 @@ public class AddMovieRoomControler {
         MovieRoom mr = new MovieRoom(this.roomname.getText(),Integer.parseInt(cineplace.getText()),this.mainControleur.Cinemas.getCinemaByName(cinename.getText()).getCinemaId());
         this.mainControleur.Cinemas.getCinemaByName(cinename.getText()).addMovieRoom(mr);
         dialogStage.close();
+        this.apc.setReload();
     }
 
     public void cancelButon() {

@@ -37,7 +37,6 @@ public class AdminPannelControleur {
     public ListView<String> Friday;
     public ListView<String> Saturday;
     public ListView<String> Sunday;
-    public Button reload;
     private mainControleur MainControleur;
     private filmshow session;
 
@@ -48,28 +47,43 @@ public class AdminPannelControleur {
         this.MainControleur=mainControleur;
     }
 
+    public void setReload()
+    {
+        String cinevalue=cinelist.getValue();
+        cinelist.getItems().clear();
+        for(int i=0;i< this.MainControleur.Cinemas.getCinemas().size();i++)
+        {
+            cinelist.getItems().add(i,this.MainControleur.Cinemas.getCinemas().get(i).getName());
+        }
+        cinelist.getItems().add("+ Add Cinema");
+        if(cinevalue!="+ Add Cinema")
+        {
+            cinelist.setValue(cinevalue);
+        }
+        else
+        {
+            cinelist.setValue(cinelist.getItems().get(0));
+        }
+    }
+
     public void init() {
         for(int i=0;i< this.MainControleur.Cinemas.getCinemas().size();i++)
         {
             cinelist.getItems().add(i,this.MainControleur.Cinemas.getCinemas().get(i).getName());
         }
         cinelist.getItems().add("+ Add Cinema");
-        Image img=new Image("http://image.noelshack.com/fichiers/2022/12/4/1648143237-download.png");
-        ImageView imgv= new ImageView(img);
-        imgv.setFitHeight(40);
-        imgv.setFitWidth(40);
-        reload.setGraphic(imgv);
-        reload.setMaxSize(40,40);
+        cinelist.setValue(this.MainControleur.Cinemas.getCinemas().get(0).getName());
     }
 
     private void removeSession(filmshow session) {
         MainControleur.Cinemas.getCinemaByName(cinelist.getValue()).getMovieRooms(roomList.getValue()).removeMovieShow(session);
+        setReload();
     }
 
     private void afficheSession(filmshow session) {
         if(session!=null)
         {
-            MainControleur.OpenSeanceView(session);
+            MainControleur.OpenSeanceView(session,this);
         }
     }
     private filmshow createSession(String day,int hour,String salleName,int salleid)
@@ -102,20 +116,25 @@ public class AdminPannelControleur {
 
     public void selectCinema()
     {
-        if(!cinelist.getValue().equals("+ Add Cinema"))
+        try {
+            if(!cinelist.getValue().equals("+ Add Cinema"))
+            {
+                loadCinema();
+                loadMovieRoom();
+            }
+            else
+            {
+                addCinema();
+            }
+        }catch(Exception e)
         {
-            loadCinema();
-            loadMovieRoom();
-        }
-        else
-        {
-            addCinema();
+
         }
 
     }
 
     private void addCinema() {
-        MainControleur.OpenaddCinema();
+        MainControleur.OpenaddCinema(this);
     }
 
     public void loadCinema() {
@@ -208,6 +227,7 @@ public class AdminPannelControleur {
             }
         }
         roomList.getItems().add("+ addMovieRoom");
+        roomList.setValue(roomList.getItems().get(0));
     }
     public void loadRoom()
     {
@@ -222,7 +242,7 @@ public class AdminPannelControleur {
     }
 
     private void addMovieRoom() {
-        MainControleur.OpenaddMovieRoom(cinelist.getValue());
+        MainControleur.OpenaddMovieRoom(cinelist.getValue(),this);
     }
 
     public void loadRoomShedule() {

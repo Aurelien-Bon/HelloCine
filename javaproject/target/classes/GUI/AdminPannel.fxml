@@ -12,9 +12,9 @@
             <Font size="40.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="cinelist" layoutX="686.0" layoutY="40.0" onAction="#selectCinema" prefHeight="32.0" prefWidth="205.0" />
+      <ChoiceBox fx:id="cinelist" layoutX="686.0" layoutY="40.0" onAction="#selectCinema" prefHeight="32.0" prefWidth="205.0" styleClass="my-button" stylesheets="@firstStylecss.css" />
       <ListView fx:id="listMovie" layoutX="210.0" layoutY="101.0" orientation="HORIZONTAL" prefHeight="187.0" prefWidth="1049.0" />
-      <ChoiceBox fx:id="roomList" layoutX="634.0" layoutY="299.0" onAction="#loadRoom" prefWidth="150.0" />
+      <ChoiceBox fx:id="roomList" layoutX="634.0" layoutY="299.0" onAction="#loadRoom" prefWidth="150.0" styleClass="my-rect" stylesheets="@firstStylecss.css" />
       <ListView fx:id="Monday" fixedCellSize="70.0" layoutX="210.0" layoutY="352.0" prefHeight="355.0" prefWidth="150.0">
          <cursor>
             <Cursor fx:constant="HAND" />
@@ -56,8 +56,7 @@
       <Label layoutX="180.0" layoutY="554.0" text="19h" />
       <Label layoutX="180.0" layoutY="624.0" text="22h" />
       <Label layoutX="180.0" layoutY="694.0" text="1h" />
-      <Button layoutX="46.0" layoutY="28.0" mnemonicParsing="false" onAction="#quitbutton" prefHeight="25.0" prefWidth="62.0" style="-fx-border-radius: 16px;" text="Quit" />
-      <Button fx:id="reload" layoutX="1207.0" layoutY="16.0" mnemonicParsing="false" onAction="#reloadPage" />
+      <Button layoutX="46.0" layoutY="28.0" mnemonicParsing="false" onAction="#quitbutton" prefHeight="25.0" prefWidth="62.0" styleClass="my-rect" stylesheets="@firstStylecss.css" text="Quit" />
 
    </children>
 </AnchorPane>

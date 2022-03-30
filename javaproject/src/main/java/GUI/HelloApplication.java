@@ -1,10 +1,15 @@
 package GUI;
 
+import UserGestion.mail;
+import info.movito.themoviedbapi.TmdbApi;
+import info.movito.themoviedbapi.TmdbMovies;
+import info.movito.themoviedbapi.model.Video;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
 
 import java.io.IOException;
+import java.util.List;
 
 public class HelloApplication extends Application {
 
@@ -21,6 +26,8 @@ public class HelloApplication extends Application {
 
 
     public static void main(String[] args) {
+        //mail mail=new mail();
+        //mail.sendPassword("nathan.orsinet02@gmail.com","Nathan Gros bg");
         launch();
     }
 }
