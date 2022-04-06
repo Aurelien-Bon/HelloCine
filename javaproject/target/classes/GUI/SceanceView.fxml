@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.SceanceViewControleur">
+<AnchorPane styleClass="mybackground" stylesheets="@firstStylecss.css" prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.SceanceViewControleur">
    <children>
       <GridPane layoutX="-1.0" prefHeight="328.0" prefWidth="500.0">
         <columnConstraints>
@@ -42,7 +42,7 @@
                      </font>
                   </Label>
                </children></FlowPane>
-            <FlowPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <FlowPane styleClass="my-textFile" stylesheets="@firstStylecss.css"  prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
                   <Label fx:id="CinemaMovieRoom" alignment="CENTER" prefHeight="86.0" prefWidth="295.0">
                      <font>
@@ -50,7 +50,7 @@
                      </font>
                   </Label>
                </children></FlowPane>
-            <FlowPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+            <FlowPane  prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
                <children>
                   <Label alignment="CENTER" prefHeight="82.0" prefWidth="206.0" text="Movie:" textAlignment="CENTER">
                      <font>
@@ -60,9 +60,9 @@
                </children></FlowPane>
             <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
-                  <ChoiceBox fx:id="CollectionList" prefHeight="40.0" prefWidth="287.0" />
+                  <ChoiceBox styleClass="my-textFile" stylesheets="@firstStylecss.css" fx:id="CollectionList" prefHeight="40.0" prefWidth="287.0" />
                </children></FlowPane>
-            <FlowPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
+            <FlowPane  prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
                <children>
                   <Label alignment="CENTER" prefHeight="83.0" prefWidth="208.0" text="Price:">
                      <font>
@@ -72,14 +72,14 @@
                </children></FlowPane>
             <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <children>
-                  <TextField fx:id="price" prefHeight="40.0" prefWidth="287.0">
+                  <TextField styleClass="my-textFile" stylesheets="@firstStylecss.css" fx:id="price" prefHeight="40.0" prefWidth="287.0">
                      <font>
                         <Font size="18.0" />
                      </font></TextField>
                </children></FlowPane>
          </children>
       </GridPane>
-      <Button layoutX="249.0" layoutY="346.0" mnemonicParsing="false" onAction="#onAddButton" prefHeight="36.0" prefWidth="105.0" text="ADD" />
-       <Button layoutX="381.0" layoutY="346.0" mnemonicParsing="false" onAction="#onCancelButton" prefHeight="36.0" prefWidth="105.0" text="Cancel" />
+      <Button styleClass="my-button" stylesheets="@firstStylecss.css" layoutX="249.0" layoutY="346.0" mnemonicParsing="false" onAction="#onAddButton" prefHeight="36.0" prefWidth="105.0" text="ADD" />
+       <Button styleClass="my-button" stylesheets="@firstStylecss.css" layoutX="381.0" layoutY="346.0" mnemonicParsing="false" onAction="#onCancelButton" prefHeight="36.0" prefWidth="105.0" text="Cancel" />
    </children>
 </AnchorPane>

@@ -102,17 +102,17 @@ public class mainControleur {
         }
     }
 
-    public void HelloCine()
+    public void HelloCine(boolean isadmin)
     {
         try {
             // Load person overview.
 
             FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("HelloCine.fxml"));
-            AnchorPane personOverview = (AnchorPane) loader.load();
+            AnchorPane personOverview = loader.load();
 
             HelloCine controller = loader.getController();
             controller.setMainApp(this);
-            controller.init(true);
+            controller.init(isadmin);
             // Set person overview into the center of root layout.
             rootLayout.setCenter(personOverview);
             stage.setTitle("HelloCine");
@@ -120,6 +120,44 @@ public class mainControleur {
             e.printStackTrace();
         }
     }
+    public void ConnectionPage()
+    {
+        try {
+            // Load person overview.
+
+            FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("ConnectionPage.fxml"));
+            AnchorPane personOverview = (AnchorPane) loader.load();
+
+            ConnectionPageControleur controller = loader.getController();
+            controller.setMainApp(this);
+            controller.init();
+            // Set person overview into the center of root layout.
+            rootLayout.setCenter(personOverview);
+            stage.setTitle("HelloCine - Connection");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void CreateAccountPage()
+    {
+        try {
+            // Load person overview.
+
+            FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("createAccount.fxml"));
+            AnchorPane personOverview = (AnchorPane) loader.load();
+
+            CreateAccountControleur controller = loader.getController();
+            controller.setMainApp(this);
+            controller.init();
+            // Set person overview into the center of root layout.
+            rootLayout.setCenter(personOverview);
+            stage.setTitle("HelloCine - Create Account");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public Stage getStage() {
         return stage;
     }
@@ -195,4 +233,31 @@ public class mainControleur {
             e.printStackTrace();
         }
     }
+
+    public void OpenBuySeat(filmshow movieRoom) {
+        try {
+            // Load the fxml file and create a new stage for the popup dialog.
+            FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("buyseatview.fxml"));
+            AnchorPane page = loader.load();
+
+            // Create the dialog Stage.
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Chose your seat");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            // Set the person into the controller.
+            BuyseatviewController controller = loader.getController();
+            controller.setMainApp(this);
+            controller.setDialogStage(dialogStage);
+            // Show the dialog and wait until the user closes it
+            controller.init(movieRoom);
+            dialogStage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }

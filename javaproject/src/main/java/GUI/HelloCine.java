@@ -1,16 +1,18 @@
 package GUI;
 
 import MovieGestion.Collection;
+import MovieGestion.Movie;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.web.WebView;
 
 import java.util.Objects;
@@ -23,9 +25,10 @@ public class HelloCine {
     public WebView trileurView;
     public Label overview;
     public Label adressprinter;
+    public ListView<String> sceanceList;
     private mainControleur MainControleur;
-    @FXML
-    private ListView<String> sceanceList;
+    private Movie movieOnBord;
+
 
     public void setMainApp(mainControleur mainControleur)
     {
@@ -125,9 +128,31 @@ public class HelloCine {
         });
     }
 
+    public void openSceance(String sceanceName)
+    {
+        String[] s = sceanceName.split("\n");
+        for(var elem:MainControleur.Cinemas.getCinemaByName(s[0]).getAllMovieRooms())
+        {
+            for(var me:elem.getAllMovieshow())
+            {
+                if(me.getDay().equals(s[1])&&me.getHour().equals(s[2].replace("00",""))&&me.getMouvie().getName().equals(movieOnBord.getName()))
+                {
+                    this.MainControleur.OpenBuySeat(me);
+                }
+            }
+        }
+    }
+
     public void afficheSceance()
     {
         sceanceList.getItems().clear();
+        sceanceList.setOnMouseClicked(mouseEvent -> {
+            if(mouseEvent.getClickCount()==2)
+            {
+                openSceance(sceanceList.getSelectionModel().getSelectedItem());
+            }
+        });
+        int id=0;
         if(!Objects.equals(Cinelist.getValue(), "All Cinema"))
         {
             for(var elem:MainControleur.Cinemas.getCinemaByName(Cinelist.getValue()).getAllMovieRooms())
@@ -136,8 +161,9 @@ public class HelloCine {
                 {
                     if(Objects.equals(me.getMouvie().getName(), movieToSee.getSelectionModel().getSelectedItem()))
                     {
-                        String sceance= me.getDay()+"\n"+me.getHour()+"00\n£"+me.getPrice();
+                        String sceance= Cinelist.getValue()+"\n"+ me.getDay()+"\n"+me.getHour()+"00\n£"+me.getPrice();
                         sceanceList.getItems().add(sceance);
+                        id++;
                     }
                 }
             }
@@ -170,7 +196,7 @@ public class HelloCine {
                             }
                             if(!insind)
                             {
-                                String sceance= me.getDay()+"\n"+me.getHour()+"00\n£"+me.getPrice();
+                                String sceance= cin.getName()+"\n"+ me.getDay()+"\n"+me.getHour()+"00\n£"+me.getPrice();
                                 sceanceList.getItems().add(sceance);
                             }
                         }
@@ -185,9 +211,14 @@ public class HelloCine {
                     {
                         overview.setText(me.getOverview());
                         trileurView.getEngine().load(me.getTraileurLink());
+                        movieOnBord=me;
                     }
                 }
             }
         }
+    }
+
+    public void logout() {
+        this.MainControleur.ConnectionPage();
     }
 }

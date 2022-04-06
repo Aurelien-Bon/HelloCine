@@ -20,14 +20,12 @@ public class HelloApplication extends Application {
     public void start(Stage primaryStage) throws IOException {
         mainControleur mainControleur=new mainControleur();
         mainControleur.init();
-        mainControleur.HelloCine();
+        mainControleur.ConnectionPage();
         this.primaryStage=mainControleur.getStage();
     }
 
 
     public static void main(String[] args) {
-        //mail mail=new mail();
-        //mail.sendPassword("nathan.orsinet02@gmail.com","Nathan Gros bg");
         launch();
     }
 }

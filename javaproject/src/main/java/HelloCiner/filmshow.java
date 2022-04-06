@@ -4,6 +4,7 @@ import MovieGestion.Movie;
 import info.movito.themoviedbapi.TmdbApi;
 import info.movito.themoviedbapi.TmdbMovies;
 import info.movito.themoviedbapi.model.MovieDb;
+import mysqlc.Mysqlc;
 
 public class filmshow {
     private String Day;
@@ -77,5 +78,11 @@ public class filmshow {
 
     public void setNbPlace(int capacity) {
         this.placeTaken=capacity;
+    }
+
+    public void removePlace(double value) {
+        this.placeTaken-=value;
+        Mysqlc mysqlc = new Mysqlc();
+        mysqlc.executeQuery("UPDATE `filmshow` SET `placeTaken` = '"+this.placeTaken+"' WHERE `filmshow`.`SalleId` = "+ this.salleId+" AND `filmshow`.`Day` = '"+this.Day+"' AND `filmshow`.`Hours` = '"+this.hour+"';");
     }
 }

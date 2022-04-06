@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="214.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AddCinemaControleur">
+<AnchorPane styleClass="mybackground" stylesheets="@firstStylecss.css" prefHeight="214.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AddCinemaControleur">
    <children>
       <GridPane layoutY="20.0" prefHeight="105.0" prefWidth="500.0">
         <columnConstraints>
@@ -21,7 +21,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="cinename" maxWidth="240.0" prefHeight="39.0" GridPane.columnIndex="1">
+            <TextField styleClass="my-textFile" stylesheets="@firstStylecss.css" fx:id="cinename" maxWidth="240.0" prefHeight="39.0" GridPane.columnIndex="1">
                <font>
                   <Font size="18.0" />
                </font>
@@ -31,14 +31,14 @@
                      <Font size="18.0" />
                  </font>
              </Label>
-             <TextField fx:id="cineadre" maxWidth="240.0" prefHeight="39.0" prefWidth="230.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+             <TextField styleClass="my-textFile" stylesheets="@firstStylecss.css" fx:id="cineadre" maxWidth="240.0" prefHeight="39.0" prefWidth="230.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                  <font>
                      <Font size="18.0" />
                  </font>
              </TextField>
          </children>
       </GridPane>
-      <Button layoutX="250.0" layoutY="170.0" mnemonicParsing="false" onAction="#addButon" prefHeight="30.0" prefWidth="110.0" text="Add" />
-      <Button layoutX="376.0" layoutY="170.0" mnemonicParsing="false" onAction="#cancelButon" prefHeight="30.0" prefWidth="110.0" text="Cancel" />
+      <Button styleClass="my-button" stylesheets="@firstStylecss.css" layoutX="250.0" layoutY="170.0" mnemonicParsing="false" onAction="#addButon" prefHeight="30.0" prefWidth="110.0" text="Add" />
+      <Button styleClass="my-button" stylesheets="@firstStylecss.css" layoutX="376.0" layoutY="170.0" mnemonicParsing="false" onAction="#cancelButon" prefHeight="30.0" prefWidth="110.0" text="Cancel" />
    </children>
 </AnchorPane>

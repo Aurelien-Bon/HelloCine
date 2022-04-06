@@ -318,4 +318,61 @@ public class Mysqlc {
             }
         }
     }
+
+    public List<List<String>> MysqlcgetUser() {
+        // TODO code application logic here
+        Connection conn = null;
+        ResultSet rs = null;
+        List<List<String>> result = new ArrayList<>();
+        try {
+            // create a connection to the database
+            conn = DriverManager.getConnection(url, user, password);
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery("SELECT * FROM `user` WHERE 1");
+            while (rs.next()) {
+                List<String> a = new ArrayList<>();
+                a.add(Integer.toString(rs.getInt(1)));
+                a.add(rs.getString(2));
+                a.add(rs.getString(3));
+                a.add(rs.getString(4));
+                a.add(rs.getString(5));
+                a.add(rs.getString(6));
+                a.add(Integer.toString(rs.getInt(7)));
+                result.add(a);
+            }
+            conn.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                if (conn != null)
+                    conn.close();
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
+        return result;
+    }
+    public void MysqlcAddUser(List<String> newUser)
+    {
+        Connection conn = null;
+        ResultSet rs=null;
+        try {
+            // create a connection to the database
+            conn = DriverManager.getConnection(url, user, password);
+            stmt = conn.createStatement();
+            stmt.executeUpdate("INSERT INTO `user` (`id`, `mail`, `password`, `lastname`, `firstname`, `BirdDate`, `admin`) VALUES (NULL, '"+newUser.get(0)+"', '"+newUser.get(1)+"', '"+newUser.get(2)+"', '"+newUser.get(3)+"','"+newUser.get(4)+"' ,'0');");
+            conn.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                if (conn != null)
+                    conn.close();
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
+    }
+
 }

@@ -7,5 +7,33 @@
     -fx-stroke-line-cap: butt;
 }
 .my-button{
-    -fx-font-size: 12px;
+    -fx-background-color: #EDD826;
+    -fx-border-color: gray;
+    -fx-border-radius: 5px;
+}
+.my-button:hover{
+    -fx-background-color: #EDD826;
+    -fx-border-color: gray;
+    -fx-border-radius: 5px;
+    -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}
+
+.mybackground{
+    -fx-background-color: #FFF7B3;
+}
+.my-textFile{
+    -fx-background-color: #EDD826;
+    -fx-border-color: gray;
+    -fx-border-radius: 5px;
+}
+.my-textFile:hover {
+    -fx-background-color: #EDD826;
+    -fx-border-color: gray;
+    -fx-border-radius: 5px;
+    -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}
+.my-listview{
+    -fx-background-color: #EDD826;
+    -fx-border-color: gray;
+    -fx-border-radius: 5px;
 }

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.web.*?>
 
-<AnchorPane prefHeight="725.0" prefWidth="1320.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.HelloCine">
+<AnchorPane prefHeight="725.0" prefWidth="1320.0" styleClass="mybackground" stylesheets="@firstStylecss.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.HelloCine">
    <children>
       <AnchorPane fx:id="ancorepane" layoutX="1258.0" prefHeight="35.0" prefWidth="62.0" />
       <Label layoutX="90.0" layoutY="56.0" prefHeight="70.0" prefWidth="360.0" text="Films on display:">
@@ -13,19 +14,23 @@
             <Font size="48.0" />
          </font>
       </Label>
-      <ListView fx:id="movieToSee" layoutX="90.0" layoutY="126.0" orientation="HORIZONTAL" prefHeight="200.0" prefWidth="1130.0" />
-      <ChoiceBox fx:id="Cinelist" layoutX="453.0" layoutY="78.0" prefHeight="45.0" prefWidth="291.0" />
-      <WebView fx:id="trileurView" layoutX="772.0" layoutY="341.0" prefHeight="244.0" prefWidth="448.0" />
+      <ListView fx:id="movieToSee" layoutX="90.0" layoutY="126.0" orientation="HORIZONTAL" prefHeight="200.0" prefWidth="1130.0" styleClass="my-listview" stylesheets="@firstStylecss.css" />
+      <ChoiceBox fx:id="Cinelist" layoutX="453.0" layoutY="78.0" prefHeight="45.0" prefWidth="291.0" styleClass="my-textFile" stylesheets="@firstStylecss.css" />
+      <WebView fx:id="trileurView" layoutX="772.0" layoutY="341.0" prefHeight="244.0" prefWidth="448.0" styleClass="my-textFile" stylesheets="@firstStylecss.css" />
       <Label fx:id="overview" alignment="TOP_LEFT" layoutX="90.0" layoutY="363.0" prefHeight="200.0" prefWidth="657.0" wrapText="true">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <ListView fx:id="sceanceList" fixedCellSize="100.0" layoutX="90.0" layoutY="595.0" orientation="HORIZONTAL" prefHeight="81.0" prefWidth="1130.0" />
       <Label fx:id="adressprinter" layoutX="784.0" layoutY="53.0" prefHeight="70.0" prefWidth="436.0">
          <font>
             <Font size="30.0" />
          </font>
       </Label>
+      <ListView fx:id="sceanceList" fixedCellSize="100.0" layoutX="90.0" layoutY="610.0" orientation="HORIZONTAL" prefHeight="86.0" prefWidth="1130.0" styleClass="my-listview" stylesheets="@firstStylecss.css">
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor></ListView>
+      <Button layoutX="1181.0" layoutY="4.0" mnemonicParsing="false" onAction="#logout" prefHeight="26.0" prefWidth="62.0" styleClass="my-button" stylesheets="@firstStylecss.css" text="Log out" />
    </children>
 </AnchorPane>

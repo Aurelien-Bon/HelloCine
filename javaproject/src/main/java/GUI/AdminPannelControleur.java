@@ -5,6 +5,7 @@ import HelloCiner.MovieRoom;
 import HelloCiner.filmshow;
 import MovieGestion.Collection;
 import MovieGestion.Movie;
+import com.sun.mail.imap.Rights;
 import info.movito.themoviedbapi.model.MovieDb;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -39,6 +40,7 @@ public class AdminPannelControleur {
     public ListView<String> Sunday;
     private mainControleur MainControleur;
     private filmshow session;
+    private String movietoremove;
 
 
 
@@ -137,7 +139,28 @@ public class AdminPannelControleur {
         MainControleur.OpenaddCinema(this);
     }
 
+    public void removeMovie()
+    {
+        MainControleur.Cinemas.getCinemaByName(cinelist.getValue()).getCollection().removeMovieByName(movietoremove);
+        for(var elem:MainControleur.Cinemas.getCinemaByName(cinelist.getValue()).getAllMovieRooms())
+        {
+            for(var me:elem.getAllMovieshow())
+            {
+                if(me.getMouvie().getName().equals(movietoremove))
+                {
+                    removeSession(me);
+                }
+            }
+        }
+        setReload();
+    }
+
     public void loadCinema() {
+        ContextMenu contextMenuMovie=new ContextMenu();
+
+        MenuItem menuItem1 = new MenuItem("Remove Movie");
+        menuItem1.setOnAction(event -> removeMovie());
+        contextMenuMovie.getItems().add(menuItem1);
         listMovie.getSelectionModel().clearSelection();
         String cine = cinelist.getValue();
         Collection c=new Collection();
@@ -208,6 +231,11 @@ public class AdminPannelControleur {
                 {
                     this.MainControleur.openAddMovie(cinelist.getValue());
                 }
+            }
+            else if(event.getButton() == MouseButton.SECONDARY)
+            {
+                movietoremove=listMovie.getSelectionModel().getSelectedItem();
+                contextMenuMovie.show(MainControleur.getStage(),event.getSceneX(),event.getSceneY());
             }
         });
     }
@@ -477,10 +505,9 @@ public class AdminPannelControleur {
     }
 
     public void quitbutton() {
-        MainControleur.HelloCine();
+        MainControleur.HelloCine(true);
     }
 
-    public void reloadPage(ActionEvent event) {
-        MainControleur.openAdminPanel();
+    public void modifieUser(ActionEvent event) {
     }
 }

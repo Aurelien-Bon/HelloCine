@@ -38,6 +38,18 @@ public class Collection {
     {
         Collection.remove(movie);
     }
+    public void removeMovieByName(String name)
+    {
+        for(var elem:Collection)
+        {
+            if(elem.getName().equals(name))
+            {
+                Collection.remove(elem);
+                Mysqlc mysqlc=new Mysqlc();
+                mysqlc.executeQuery("DELETE FROM `movie` WHERE `idtmdb` = "+elem.getId()+";");
+            }
+        }
+    }
 
     public List<Movie> getMovieList() {
         return Collection;
