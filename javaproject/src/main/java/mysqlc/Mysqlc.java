@@ -2,6 +2,7 @@ package mysqlc;
 import HelloCiner.Cinema;
 import HelloCiner.filmshow;
 import MovieGestion.Movie;
+import javafx.scene.control.Alert;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -17,7 +18,27 @@ public class Mysqlc {
     private String password = "";
     private Statement stmt;
 
-
+    public boolean testConnection() {
+        Connection conn = null;
+        ResultSet rs = null;
+        try {
+            // create a connection to the database
+            conn = DriverManager.getConnection(url, user, password);
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery("SELECT * FROM `cinema` WHERE 1");
+            conn.close();
+            return true;
+        } catch (SQLException e) {
+            return false;
+        } finally {
+            try {
+                if (conn != null)
+                    conn.close();
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
+    }
 
     public List<List<String>> MysqlcCinemaInfo()
     {
@@ -308,7 +329,10 @@ public class Mysqlc {
             stmt.executeUpdate("DELETE FROM `movieroom` WHERE `idCinema` NOT IN (SELECT id FROM cinema WHERE 1); DELETE `filmshow` WHERE `SalleId` NOT IN (SELECT id FROM movieroom WHERE 1);");
             conn.close();
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Test Connection");
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
         } finally {
             try {
                 if (conn != null)

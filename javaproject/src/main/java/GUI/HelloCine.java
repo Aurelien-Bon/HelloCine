@@ -161,7 +161,7 @@ public class HelloCine {
                 {
                     if(Objects.equals(me.getMouvie().getName(), movieToSee.getSelectionModel().getSelectedItem()))
                     {
-                        String sceance= Cinelist.getValue()+"\n"+ me.getDay()+"\n"+me.getHour()+"00\n£"+me.getPrice();
+                        String sceance= Cinelist.getValue()+"\n"+ me.getDay()+"\n"+me.getHour()+"00\n£"+me.getPrice()+"\nPlace left: "+me.getPlaceTaken();
                         sceanceList.getItems().add(sceance);
                         id++;
                     }
@@ -173,6 +173,7 @@ public class HelloCine {
                 {
                     overview.setText(elem.getOverview());
                     trileurView.getEngine().load(elem.getTraileurLink());
+                    movieOnBord=elem;
                 }
             }
         }
@@ -196,7 +197,7 @@ public class HelloCine {
                             }
                             if(!insind)
                             {
-                                String sceance= cin.getName()+"\n"+ me.getDay()+"\n"+me.getHour()+"00\n£"+me.getPrice();
+                                String sceance= cin.getName()+"\n"+ me.getDay()+"\n"+me.getHour()+"00\n£"+me.getPrice()+"\nPlace left: "+me.getPlaceTaken();
                                 sceanceList.getItems().add(sceance);
                             }
                         }

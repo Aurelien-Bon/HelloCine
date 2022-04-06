@@ -4,6 +4,8 @@ import HelloCiner.Cinemas;
 import HelloCiner.MovieRoom;
 import HelloCiner.filmshow;
 import MovieGestion.Movie;
+import UserGestion.Ticket;
+import UserGestion.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -28,6 +30,7 @@ public class mainControleur {
     private Parent root;
     private BorderPane rootLayout;
     public Cinemas Cinemas;
+    public User user;
 
 
     public void init() {
@@ -45,7 +48,7 @@ public class mainControleur {
         }
         this.Cinemas=new Cinemas();
         this.Cinemas.load();
-
+        user=new User();
     }
 
     public void openAddMovieComfirm(Movie movie)
@@ -251,8 +254,8 @@ public class mainControleur {
             BuyseatviewController controller = loader.getController();
             controller.setMainApp(this);
             controller.setDialogStage(dialogStage);
-            // Show the dialog and wait until the user closes it
             controller.init(movieRoom);
+            // Show the dialog and wait until the user closes it
             dialogStage.showAndWait();
         } catch (IOException e) {
             e.printStackTrace();
@@ -260,4 +263,33 @@ public class mainControleur {
     }
 
 
+    public void OpenBuyTicket(List<Ticket> ticketList) {
+        try {
+            // Load the fxml file and create a new stage for the popup dialog.
+            FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("buyTicket.fxml"));
+            AnchorPane page = loader.load();
+
+            // Create the dialog Stage.
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Pay your seat");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            // Set the person into the controller.
+            BuyTicketControler controller = loader.getController();
+            controller.setMainApp(this);
+            controller.setDialogStage(dialogStage);
+            controller.init(ticketList);
+            // Show the dialog and wait until the user closes it
+            dialogStage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public User getUser() {
+        return user;
+    }
 }

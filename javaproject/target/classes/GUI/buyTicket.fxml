@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="439.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.BuyTicketControler">
+   <children>
+      <Label fx:id="totaltopayd" alignment="CENTER" layoutX="153.0" layoutY="14.0" prefHeight="27.0" prefWidth="136.0" text="Total:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="cardID" layoutX="95.0" layoutY="105.0" prefHeight="26.0" prefWidth="250.0" promptText="Enter name card" />
+       <TextField fx:id="cardnumber" layoutX="95.0" layoutY="175.0" prefHeight="26.0" prefWidth="250.0" promptText="4111 1111 1111 1111" />
+       <TextField fx:id="cardexp" layoutX="95.0" layoutY="242.0" prefHeight="26.0" prefWidth="114.0" promptText="MM/YY" />
+       <TextField fx:id="cardsecu" layoutX="231.0" layoutY="242.0" prefHeight="26.0" prefWidth="114.0" promptText="123" />
+      <Label layoutX="95.0" layoutY="76.0" text="Name on Card:" />
+      <Label layoutX="95.0" layoutY="149.0" text="Card Number:" />
+      <Label layoutX="94.0" layoutY="217.0" text="Expiration Date:" />
+      <Label layoutX="231.0" layoutY="217.0" text="Security Code:" />
+      <Button layoutX="96.0" layoutY="314.0" mnemonicParsing="false" onAction="#PayAction" prefHeight="26.0" prefWidth="80.0" text="Pay" />
+      <Button layoutX="267.0" layoutY="314.0" mnemonicParsing="false" onAction="#cancelbutton" prefHeight="26.0" prefWidth="80.0" text="Cancel" />
+   </children>
+</AnchorPane>

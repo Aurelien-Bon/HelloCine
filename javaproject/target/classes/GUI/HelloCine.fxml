@@ -27,7 +27,7 @@
             <Font size="30.0" />
          </font>
       </Label>
-      <ListView fx:id="sceanceList" fixedCellSize="100.0" layoutX="90.0" layoutY="610.0" orientation="HORIZONTAL" prefHeight="86.0" prefWidth="1130.0" styleClass="my-listview" stylesheets="@firstStylecss.css">
+      <ListView fx:id="sceanceList" fixedCellSize="100.0" layoutX="90.0" layoutY="600.0" orientation="HORIZONTAL" prefHeight="112.0" prefWidth="1130.0" styleClass="my-listview" stylesheets="@firstStylecss.css">
          <cursor>
             <Cursor fx:constant="DEFAULT" />
          </cursor></ListView>

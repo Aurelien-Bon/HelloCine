@@ -11,13 +11,12 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <Slider fx:id="slider" layoutX="52.0" layoutY="230.0" prefHeight="14.0" prefWidth="497.0" value="10.0" />
       <Label layoutX="100.0" layoutY="178.0" prefHeight="45.0" prefWidth="252.0" text="How many ticketdo you want?">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="numbreChose" alignment="CENTER" layoutX="372.0" layoutY="187.0" prefHeight="28.0" prefWidth="28.0" style="-fx-border-color: gray; -fx-border-radius: 5; -fx-background-color: white;">
+      <Label fx:id="numbreChose" alignment="CENTER" layoutX="354.0" layoutY="188.0" prefHeight="29.0" prefWidth="38.0" style="-fx-border-color: gray; -fx-border-radius: 5; -fx-background-color: white;">
          <font>
             <Font size="18.0" />
          </font>
@@ -32,5 +31,7 @@
                <Font size="18.0" />
            </font>
        </Button>
+      <Button styleClass="my-button" stylesheets="@firstStylecss.css" layoutX="400.0" layoutY="172.0" mnemonicParsing="false" onAction="#increment" prefHeight="29.0" prefWidth="28.0" text="+" />
+      <Button styleClass="my-button" stylesheets="@firstStylecss.css" layoutX="400.0" layoutY="202.0" mnemonicParsing="false" onAction="#decrement" prefHeight="8.0" prefWidth="28.0" text="-" />
    </children>
 </AnchorPane>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mer. 30 mars 2022 à 16:59
+-- Généré le : mer. 06 avr. 2022 à 08:28
 -- Version du serveur : 5.7.36
 -- Version de PHP : 7.4.26
 
@@ -61,14 +61,14 @@ CREATE TABLE IF NOT EXISTS `filmshow` (
   `price` int(100) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `SalleId` (`SalleId`)
-) ENGINE=MyISAM AUTO_INCREMENT=45 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=51 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `filmshow`
 --
 
 INSERT INTO `filmshow` (`id`, `SalleId`, `MovieID`, `Day`, `Hours`, `placeTaken`, `price`) VALUES
-(33, 3, 36557, 'Wednesday', '13h', 15, 10),
+(33, 3, 36557, 'Wednesday', '13h', 10, 10),
 (34, 3, 206647, 'Friday', '13h', 15, 10),
 (35, 22, 1930, 'Wednesday', '16h', 100, 10),
 (36, 22, 1930, 'Tuesday', '19h', 100, 10),
@@ -78,7 +78,9 @@ INSERT INTO `filmshow` (`id`, `SalleId`, `MovieID`, `Day`, `Hours`, `placeTaken`
 (41, 22, 36557, 'Saturday', '19h', 100, 9),
 (42, 1, 811596, 'Thursday', '22h', 150, 10),
 (43, 3, 10764, 'Saturday', '13h', 15, 10),
-(44, 7, 11, 'Tuesday', '19h', 50, 10);
+(44, 7, 11, 'Tuesday', '19h', 45, 10),
+(49, 3, 337167, 'Friday', '22h', 15, 10),
+(48, 7, 1894, 'Friday', '13h', 50, 8);
 
 -- --------------------------------------------------------
 
@@ -98,7 +100,7 @@ CREATE TABLE IF NOT EXISTS `movie` (
   `trailerUrl` text NOT NULL,
   PRIMARY KEY (`id`),
   KEY `cinemaID` (`cinemaID`)
-) ENGINE=MyISAM AUTO_INCREMENT=251 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=257 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `movie`
@@ -114,7 +116,9 @@ INSERT INTO `movie` (`id`, `cinemaID`, `idtmdb`, `Title`, `Overview`, `Duration`
 (247, 1, 10764, 'Quantum of Solace', 'Quantum of Solace continues the adventures of James Bond after Casino Royale. Betrayed by Vesper, the woman he loved, 007 fights the urge to make his latest mission personal. Pursuing his determination to uncover the truth, Bond and M interrogate Mr. White, who reveals that the organization that blackmailed Vesper is far more complex and dangerous than anyone had imagined.', '1h46', 'https://image.tmdb.org/t/p/w600_and_h900_bestv2/e3DXXLJHGqMx9yYpXsql1XNljmM.jpg', 'https://www.youtube.com/embed/BBqYaFEWBxI'),
 (248, 24, 36557, 'Casino Royale', 'Le Chiffre, a banker to the world s terrorists, is scheduled to participate in a high-stakes poker game in Montenegro, where he intends to use his winnings to establish his financial grip on the terrorist market. M sends Bond—on his maiden mission as a 00 Agent—to attend this game and prevent Le Chiffre from winning. With the help of Vesper Lynd and Felix Leiter, Bond enters the most important poker game in his already dangerous career.', '2h24', 'https://image.tmdb.org/t/p/w600_and_h900_bestv2/8Gv1dylImVuoj3bZtEWoL1TLl2q.jpg', 'https://www.youtube.com/embed/U4NT78c-pYs'),
 (249, 2, 811596, 'Notre-Dame on Fire', 'A film relating from the inside the Notre-Dame de Paris fire of April 2019.', '1h50', 'https://image.tmdb.org/t/p/w600_and_h900_bestv2/2pEVCUWEr1QyUqzmPguKAiCxxrZ.jpg', 'https://www.youtube.com/embed/VcoirOiEMpw'),
-(250, 1, 77338, 'The Intouchables', 'A true story of two men who should never have met – a quadriplegic aristocrat who was injured in a paragliding accident and a young man from the projects.', '1h53', 'https://image.tmdb.org/t/p/w600_and_h900_bestv2/ttx4GQl0azO6NJFWj4XNZCQOY7S.jpg', 'https://www.youtube.com/embed/0RqDiYnFxTk');
+(250, 1, 77338, 'The Intouchables', 'A true story of two men who should never have met – a quadriplegic aristocrat who was injured in a paragliding accident and a young man from the projects.', '1h53', 'https://image.tmdb.org/t/p/w600_and_h900_bestv2/ttx4GQl0azO6NJFWj4XNZCQOY7S.jpg', 'https://www.youtube.com/embed/0RqDiYnFxTk'),
+(255, 1, 337167, 'Fifty Shades Freed', 'Believing they have left behind shadowy figures from their past, newlyweds Christian and Ana fully embrace an inextricable connection and shared life of luxury. But just as she steps into her role as Mrs. Grey and he relaxes into an unfamiliar stability, new threats could jeopardize their happy ending before it even begins.', '1h45', 'https://image.tmdb.org/t/p/w600_and_h900_bestv2/9ZedQHPQVveaIYmDSTazhT3y273.jpg', 'https://www.youtube.com/embed/Aj6I54yrsF0'),
+(254, 2, 102382, 'The Amazing Spider-Man 2', 'For Peter Parker, life is busy. Between taking out the bad guys as Spider-Man and spending time with the person he loves, Gwen Stacy, high school graduation cannot come quickly enough. Peter has not forgotten about the promise he made to Gwen’s father to protect her by staying away, but that is a promise he cannot keep. Things will change for Peter when a new villain, Electro, emerges, an old friend, Harry Osborn, returns, and Peter uncovers new clues about his past.', '2h22', 'https://image.tmdb.org/t/p/w600_and_h900_bestv2/c3e9e18SSlvFd1cQaGmUj5tqL5P.jpg', 'https://www.youtube.com/embed/4cupRHRxs7c');
 
 -- --------------------------------------------------------
 
@@ -130,7 +134,7 @@ CREATE TABLE IF NOT EXISTS `movieroom` (
   `idCinema` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `idCinema` (`idCinema`)
-) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `movieroom`
@@ -146,7 +150,34 @@ INSERT INTO `movieroom` (`id`, `Name`, `numbrePlace`, `idCinema`) VALUES
 (10, 'Gaumont MovieRoom 4', 65, 2),
 (11, 'Gaumont MovieRoom 5', 42, 2),
 (13, 'test MovieRoom 4', 35, 1),
+(23, 'Pather MovieRoom 2', 150, 24),
 (22, 'Pather MovieRoom 1', 100, 24);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE IF NOT EXISTS `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `mail` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `lastname` varchar(100) NOT NULL,
+  `firstname` varchar(100) NOT NULL,
+  `BirdDate` varchar(100) DEFAULT NULL,
+  `admin` int(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `user`
+--
+
+INSERT INTO `user` (`id`, `mail`, `password`, `lastname`, `firstname`, `BirdDate`, `admin`) VALUES
+(1, 'aurelien.bon@me.com', 'aurelien', 'Bon', 'Aurelien', '18/10/2001', 1),
+(2, 'alexandre.bellard@edu.ece.fr', 'alex', 'Bellard', 'Alexandre', '0/0/0', 0);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
