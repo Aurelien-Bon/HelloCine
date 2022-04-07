@@ -26,6 +26,7 @@ public class HelloCine {
     public Label overview;
     public Label adressprinter;
     public ListView<String> sceanceList;
+    public Label movieduration;
     private mainControleur MainControleur;
     private Movie movieOnBord;
 
@@ -174,6 +175,8 @@ public class HelloCine {
                     overview.setText(elem.getOverview());
                     trileurView.getEngine().load(elem.getTraileurLink());
                     movieOnBord=elem;
+                    String duration="Duration : "+elem.getDuration();
+                    movieduration.setText(duration);
                 }
             }
         }
@@ -213,6 +216,8 @@ public class HelloCine {
                         overview.setText(me.getOverview());
                         trileurView.getEngine().load(me.getTraileurLink());
                         movieOnBord=me;
+                        String duration="Duration : "+me.getDuration();
+                        movieduration.setText(duration);
                     }
                 }
             }

@@ -1,45 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane styleClass="mybackground" stylesheets="@firstStylecss.css" prefHeight="725.0" prefWidth="1320.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.CreateAccountControleur">
+<AnchorPane prefHeight="725.0" prefWidth="1320.0" styleClass="mybackground" stylesheets="@firstStylecss.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.CreateAccountControleur">
    <children>
-      <Label alignment="CENTER" layoutX="429.0" layoutY="29.0" prefHeight="70.0" prefWidth="462.0" text="Create your Account">
+      <Label alignment="CENTER" layoutX="429.0" layoutY="29.0" prefHeight="70.0" prefWidth="462.0" text="Create your account">
          <font>
-            <Font size="48.0" />
+            <Font name="Broadway" size="34.0" />
          </font>
+         <textFill>
+            <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+               </stops>
+            </RadialGradient>
+         </textFill>
       </Label>
-      <TextField styleClass="my-textFile" stylesheets="@firstStylecss.css" fx:id="mail" layoutX="446.0" layoutY="148.0" prefHeight="56.0" prefWidth="428.0" promptText="Mail adress:">
+      <TextField fx:id="mail" layoutX="446.0" layoutY="148.0" prefHeight="56.0" prefWidth="428.0" promptText="Mail adress:" styleClass="my-textFile" stylesheets="@firstStylecss.css">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField styleClass="my-textFile" stylesheets="@firstStylecss.css" fx:id="password" layoutX="446.0" layoutY="248.0" prefHeight="56.0" prefWidth="428.0" promptText="Password:">
+      <TextField fx:id="password" layoutX="446.0" layoutY="248.0" prefHeight="56.0" prefWidth="428.0" promptText="Password:" styleClass="my-textFile" stylesheets="@firstStylecss.css">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField styleClass="my-textFile" stylesheets="@firstStylecss.css" fx:id="fname" layoutX="446.0" layoutY="348.0" prefHeight="56.0" prefWidth="428.0" promptText="First Name:">
+      <TextField fx:id="fname" layoutX="446.0" layoutY="348.0" prefHeight="56.0" prefWidth="428.0" promptText="First Name:" styleClass="my-textFile" stylesheets="@firstStylecss.css">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField styleClass="my-textFile" stylesheets="@firstStylecss.css" fx:id="lname" layoutX="446.0" layoutY="448.0" prefHeight="56.0" prefWidth="428.0" promptText="Last Name:">
+      <TextField fx:id="lname" layoutX="446.0" layoutY="448.0" prefHeight="56.0" prefWidth="428.0" promptText="Last Name:" styleClass="my-textFile" stylesheets="@firstStylecss.css">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <DatePicker styleClass="my-textFile" stylesheets="@firstStylecss.css" fx:id="dateBird" layoutX="446.0" layoutY="548.0" prefHeight="56.0" prefWidth="428.0" promptText="Birthday date:">
+      <DatePicker fx:id="dateBird" layoutX="446.0" layoutY="548.0" prefHeight="56.0" prefWidth="428.0" promptText="Birthday date:" styleClass="my-textFile" stylesheets="@firstStylecss.css">
 
       </DatePicker>
-      <Button styleClass="my-button" stylesheets="@firstStylecss.css" layoutX="446.0" layoutY="629.0" mnemonicParsing="false" onAction="#CreateAccoutButton" prefHeight="56.0" prefWidth="195.0" text="Create account">
+      <Button layoutX="446.0" layoutY="629.0" mnemonicParsing="false" onAction="#CreateAccoutButton" prefHeight="56.0" prefWidth="195.0" styleClass="my-button" stylesheets="@firstStylecss.css" text="Create account">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button styleClass="my-button" stylesheets="@firstStylecss.css" layoutX="678.0" layoutY="629.0" mnemonicParsing="false" onAction="#cancelButton" prefHeight="56.0" prefWidth="195.0" text="Cancel">
+      <Button layoutX="678.0" layoutY="629.0" mnemonicParsing="false" onAction="#cancelButton" prefHeight="56.0" prefWidth="195.0" styleClass="my-button" stylesheets="@firstStylecss.css" text="Cancel">
          <font>
             <Font size="18.0" />
          </font>
@@ -49,6 +67,11 @@
             <Font size="18.0" />
          </font>
       </Label>
+      <ImageView fitHeight="718.0" fitWidth="1312.0" layoutX="7.0" layoutY="4.0" opacity="0.33" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@fondcreacompte.PNG" />
+         </image>
+      </ImageView>
 
    </children>
 </AnchorPane>

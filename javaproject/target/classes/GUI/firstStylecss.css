@@ -19,7 +19,9 @@
 }
 
 .mybackground{
-    -fx-background-color: #FFF7B3;
+    -fx-background-image: url('fond-8.png');
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 1400 800;
 }
 .my-textFile{
     -fx-background-color: #EDD826;
@@ -36,4 +38,12 @@
     -fx-background-color: #EDD826;
     -fx-border-color: gray;
     -fx-border-radius: 5px;
+}
+.myconnexionpage{
+    -fx-background-image: url('fond.jpg');
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 1400 800;
+}
+.my-overview{
+
 }
