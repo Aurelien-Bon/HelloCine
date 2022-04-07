@@ -44,6 +44,26 @@
     -fx-background-repeat: no-repeat;
     -fx-background-size: 1400 800;
 }
+.mycreateaccount{
+    -fx-background-image: url('fondcreacompte.jpg');
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 1400 800;
+}
+.my-numberticket{
+    -fx-background-image: url('fondnumberticket.PNG');
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 600 400;
+}
+.my-payment{
+    -fx-background-image: url('fondpayment.jpg');
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 500 400;
+}
+.my-seanceview{
+    -fx-background-image: url('fondpayment.jpg');
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 500 400;
+}
 .my-overview{
 
 }

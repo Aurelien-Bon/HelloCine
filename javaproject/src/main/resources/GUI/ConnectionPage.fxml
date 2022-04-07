@@ -8,34 +8,34 @@
 
 <AnchorPane prefHeight="725.0" prefWidth="1320.0" styleClass="myconnexionpage" stylesheets="@firstStylecss.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ConnectionPageControleur">
    <children>
-      <TextField fx:id="mail" layoutX="446.0" layoutY="253.0" prefHeight="56.0" prefWidth="428.0" promptText="Mail adress:" styleClass="my-textFile" stylesheets="@firstStylecss.css">
+      <TextField fx:id="mail" layoutX="446.0" layoutY="290.0" prefHeight="56.0" prefWidth="428.0" promptText="Mail adress:" styleClass="my-textFile" stylesheets="@firstStylecss.css">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-       <PasswordField fx:id="password" layoutX="446.0" layoutY="353.0" prefHeight="56.0" prefWidth="428.0" promptText="Password:" styleClass="my-textFile" stylesheets="@firstStylecss.css">
+       <PasswordField fx:id="password" layoutX="447.0" layoutY="377.0" prefHeight="56.0" prefWidth="428.0" promptText="Password:" styleClass="my-textFile" stylesheets="@firstStylecss.css">
            <font>
                <Font size="18.0" />
            </font>
        </PasswordField>
-      <Button layoutX="446.0" layoutY="486.0" minHeight="50.0" minWidth="200.0" mnemonicParsing="false" onAction="#connectButton" prefHeight="50.0" prefWidth="200.0" styleClass="my-button" stylesheets="@firstStylecss.css" text="Connection">
+      <Button layoutX="446.0" layoutY="522.0" minHeight="50.0" minWidth="200.0" mnemonicParsing="false" onAction="#connectButton" prefHeight="50.0" prefWidth="200.0" styleClass="my-button" stylesheets="@firstStylecss.css" text="Connection">
          <font>
             <Font size="18.0" />
          </font></Button>
-       <Button layoutX="674.0" layoutY="486.0" minHeight="50.0" minWidth="200.0" mnemonicParsing="false" onAction="#CreateAccountButton" prefHeight="50.0" prefWidth="200.0" styleClass="my-button" stylesheets="@firstStylecss.css" text="Create Account">
+       <Button layoutX="674.0" layoutY="522.0" minHeight="50.0" minWidth="200.0" mnemonicParsing="false" onAction="#CreateAccountButton" prefHeight="50.0" prefWidth="200.0" styleClass="my-button" stylesheets="@firstStylecss.css" text="Create Account">
          <font>
             <Font size="18.0" />
          </font></Button>
-       <Button layoutX="447.0" layoutY="561.0" minHeight="50.0" minWidth="200.0" mnemonicParsing="false" onAction="#connectasguestButton" prefHeight="50.0" prefWidth="428.0" styleClass="my-button" stylesheets="@firstStylecss.css" text="Connect as a guest">
+       <Button layoutX="446.0" layoutY="598.0" minHeight="50.0" minWidth="200.0" mnemonicParsing="false" onAction="#connectasguestButton" prefHeight="50.0" prefWidth="428.0" styleClass="my-button" stylesheets="@firstStylecss.css" text="Connect as a guest">
          <font>
             <Font size="18.0" />
          </font></Button>
-      <Button layoutX="726.0" layoutY="421.0" mnemonicParsing="false" onAction="#sendPassword" prefHeight="11.0" prefWidth="148.0" style="-fx-background-color: null; -fx-border-color: gray; -fx-border-radius: 12;" text="Password Forget?">
+      <Button layoutX="726.0" layoutY="442.0" mnemonicParsing="false" onAction="#sendPassword" prefHeight="11.0" prefWidth="148.0" style="-fx-background-color: null; -fx-border-color: gray; -fx-border-radius: 12;" text="Password Forget?">
          <font>
             <Font name="System Italic" size="14.0" />
          </font>
       </Button>
-      <ImageView fitHeight="200.0" fitWidth="440.0" layoutX="440.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="200.0" fitWidth="440.0" layoutX="440.0" layoutY="143.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@test-2.PNG" />
          </image>
@@ -43,6 +43,6 @@
             <Glow level="0.16" />
          </effect>
       </ImageView>
-      <Label fx:id="errorMessage" alignment="CENTER" layoutX="450.0" layoutY="635.0" prefHeight="56.0" prefWidth="299.0" wrapText="true" />
+      <Label fx:id="errorMessage" alignment="CENTER" layoutX="509.0" layoutY="29.0" prefHeight="77.0" prefWidth="304.0" wrapText="true" />
    </children>
 </AnchorPane>

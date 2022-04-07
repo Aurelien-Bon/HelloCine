@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane styleClass="mybackground" stylesheets="@firstStylecss.css" prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.SceanceViewControleur">
+<AnchorPane prefHeight="400.0" prefWidth="500.0" styleClass="mybackground" stylesheets="@firstStylecss.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.SceanceViewControleur">
    <children>
       <GridPane layoutX="-1.0" prefHeight="328.0" prefWidth="500.0">
         <columnConstraints>
@@ -22,7 +22,7 @@
                <children>
                   <Label alignment="CENTER" prefHeight="85.0" prefWidth="206.0" text="Session date:" wrapText="true">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="MV Boli" size="18.0" />
                      </font></Label>
                </children>
             </FlowPane>
@@ -36,13 +36,13 @@
                </children></FlowPane>
             <FlowPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                <children>
-                  <Label alignment="CENTER" prefHeight="84.0" prefWidth="211.0" text="Cinema / Movie Room:">
+                  <Label alignment="CENTER" prefHeight="79.0" prefWidth="193.0" text="Cinema/Movie Room:">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="MV Boli" size="18.0" />
                      </font>
                   </Label>
                </children></FlowPane>
-            <FlowPane styleClass="my-textFile" stylesheets="@firstStylecss.css"  prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <FlowPane prefHeight="200.0" prefWidth="200.0" styleClass="my-textFile" stylesheets="@firstStylecss.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
                   <Label fx:id="CinemaMovieRoom" alignment="CENTER" prefHeight="86.0" prefWidth="295.0">
                      <font>
@@ -50,36 +50,36 @@
                      </font>
                   </Label>
                </children></FlowPane>
-            <FlowPane  prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+            <FlowPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
                <children>
-                  <Label alignment="CENTER" prefHeight="82.0" prefWidth="206.0" text="Movie:" textAlignment="CENTER">
+                  <Label alignment="CENTER" prefHeight="82.0" prefWidth="206.0" styleClass="my-seanceview" stylesheets="@firstStylecss.css" text="Movie:" textAlignment="CENTER">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="MV Boli" size="18.0" />
                      </font>
                   </Label>
                </children></FlowPane>
             <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
-                  <ChoiceBox styleClass="my-textFile" stylesheets="@firstStylecss.css" fx:id="CollectionList" prefHeight="40.0" prefWidth="287.0" />
+                  <ChoiceBox fx:id="CollectionList" prefHeight="40.0" prefWidth="287.0" styleClass="my-textFile" stylesheets="@firstStylecss.css" />
                </children></FlowPane>
-            <FlowPane  prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
+            <FlowPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
                <children>
                   <Label alignment="CENTER" prefHeight="83.0" prefWidth="208.0" text="Price:">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="MV Boli" size="18.0" />
                      </font>
                   </Label>
                </children></FlowPane>
             <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <children>
-                  <TextField styleClass="my-textFile" stylesheets="@firstStylecss.css" fx:id="price" prefHeight="40.0" prefWidth="287.0">
+                  <TextField fx:id="price" prefHeight="40.0" prefWidth="287.0" styleClass="my-textFile" stylesheets="@firstStylecss.css">
                      <font>
                         <Font size="18.0" />
                      </font></TextField>
                </children></FlowPane>
          </children>
       </GridPane>
-      <Button styleClass="my-button" stylesheets="@firstStylecss.css" layoutX="249.0" layoutY="346.0" mnemonicParsing="false" onAction="#onAddButton" prefHeight="36.0" prefWidth="105.0" text="ADD" />
-       <Button styleClass="my-button" stylesheets="@firstStylecss.css" layoutX="381.0" layoutY="346.0" mnemonicParsing="false" onAction="#onCancelButton" prefHeight="36.0" prefWidth="105.0" text="Cancel" />
+      <Button layoutX="249.0" layoutY="346.0" mnemonicParsing="false" onAction="#onAddButton" prefHeight="36.0" prefWidth="105.0" styleClass="my-button" stylesheets="@firstStylecss.css" text="ADD" />
+       <Button layoutX="381.0" layoutY="346.0" mnemonicParsing="false" onAction="#onCancelButton" prefHeight="36.0" prefWidth="105.0" styleClass="my-button" stylesheets="@firstStylecss.css" text="Cancel" />
    </children>
 </AnchorPane>

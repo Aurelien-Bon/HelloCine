@@ -57,7 +57,7 @@
       <Label layoutX="180.0" layoutY="624.0" text="22h" />
       <Label layoutX="180.0" layoutY="694.0" text="1h" />
       <Button layoutX="46.0" layoutY="28.0" mnemonicParsing="false" onAction="#quitbutton" prefHeight="25.0" prefWidth="62.0" styleClass="my-button" stylesheets="@firstStylecss.css" text="Quit" />
-      <Button layoutX="1204.0" layoutY="27.0" mnemonicParsing="false" onAction="#modifieUser" prefHeight="26.0" prefWidth="69.0" styleClass="my-button" stylesheets="@firstStylecss.css" text="User" />
+      <Button layoutX="1190.0" layoutY="40.0" mnemonicParsing="false" onAction="#modifieUser" prefHeight="26.0" prefWidth="69.0" styleClass="my-button" stylesheets="@firstStylecss.css" text="User" />
 
    </children>
 </AnchorPane>

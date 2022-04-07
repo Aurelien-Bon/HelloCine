@@ -4,19 +4,19 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="placeChose" prefHeight="400.0" prefWidth="600.0" styleClass="mybackground" stylesheets="@firstStylecss.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.BuyseatviewController">
+<AnchorPane fx:id="placeChose" prefHeight="400.0" prefWidth="600.0" styleClass="my-numberticket" stylesheets="@firstStylecss.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.BuyseatviewController">
    <children>
-      <Label fx:id="FilmeShow" alignment="CENTER" contentDisplay="CENTER" layoutX="107.0" layoutY="14.0" prefHeight="53.0" prefWidth="386.0" text="Filme show">
+      <Label fx:id="FilmeShow" alignment="CENTER" contentDisplay="CENTER" layoutX="107.0" layoutY="14.0" prefHeight="53.0" prefWidth="386.0" text="Film show">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
-      <Label layoutX="100.0" layoutY="178.0" prefHeight="45.0" prefWidth="252.0" text="How many ticketdo you want?">
+      <Label alignment="CENTER" layoutX="127.0" layoutY="145.0" prefHeight="45.0" prefWidth="274.0" text="How many ticket do you want?">
          <font>
-            <Font size="18.0" />
+            <Font name="Vinci Serif Black Bold" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="numbreChose" alignment="CENTER" layoutX="354.0" layoutY="188.0" prefHeight="29.0" prefWidth="38.0" style="-fx-border-color: gray; -fx-border-radius: 5; -fx-background-color: white;">
+      <Label fx:id="numbreChose" alignment="CENTER" layoutX="411.0" layoutY="153.0" prefHeight="29.0" prefWidth="38.0" style="-fx-border-color: gray; -fx-border-radius: 5; -fx-background-color: white;">
          <font>
             <Font size="18.0" />
          </font>
@@ -31,7 +31,7 @@
                <Font size="18.0" />
            </font>
        </Button>
-      <Button styleClass="my-button" stylesheets="@firstStylecss.css" layoutX="400.0" layoutY="172.0" mnemonicParsing="false" onAction="#increment" prefHeight="29.0" prefWidth="28.0" text="+" />
-      <Button styleClass="my-button" stylesheets="@firstStylecss.css" layoutX="400.0" layoutY="202.0" mnemonicParsing="false" onAction="#decrement" prefHeight="8.0" prefWidth="28.0" text="-" />
+      <Button layoutX="449.0" layoutY="139.0" mnemonicParsing="false" onAction="#increment" prefHeight="29.0" prefWidth="28.0" styleClass="my-button" stylesheets="@firstStylecss.css" text="+" />
+      <Button layoutX="449.0" layoutY="169.0" mnemonicParsing="false" onAction="#decrement" prefHeight="8.0" prefWidth="28.0" styleClass="my-button" stylesheets="@firstStylecss.css" text="-" />
    </children>
 </AnchorPane>

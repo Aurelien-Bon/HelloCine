@@ -10,7 +10,7 @@
 <AnchorPane prefHeight="725.0" prefWidth="1320.0" styleClass="mybackground" stylesheets="@firstStylecss.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.HelloCine">
    <children>
       <AnchorPane fx:id="ancorepane" layoutX="1258.0" prefHeight="35.0" prefWidth="62.0" />
-      <Label layoutX="123.0" layoutY="53.0" prefHeight="70.0" prefWidth="308.0" text="Films on display:">
+      <Label layoutX="140.0" layoutY="54.0" prefHeight="70.0" prefWidth="308.0" text="Films on display:">
          <font>
             <Font name="Berlin Sans FB" size="44.0" />
          </font>
