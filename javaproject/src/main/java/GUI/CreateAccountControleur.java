@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class CreateAccountControleur {
-    public DatePicker dateBird;
     public TextField lname;
     public TextField fname;
     public TextField password;
@@ -82,7 +81,7 @@ public class CreateAccountControleur {
             newAccount.add("0/0/0");
             mysqlc.MysqlcAddUser(newAccount);
             TimeUnit.SECONDS.sleep(1);
-            this.mainControleur.HelloCine(false);
+            this.mainControleur.HelloCine();
         }
     }
 

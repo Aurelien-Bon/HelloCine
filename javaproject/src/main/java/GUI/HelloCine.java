@@ -27,6 +27,7 @@ public class HelloCine {
     public Label adressprinter;
     public ListView<String> sceanceList;
     public Label movieduration;
+    public Label wellcomeMessage;
     private mainControleur MainControleur;
     private Movie movieOnBord;
 
@@ -40,11 +41,25 @@ public class HelloCine {
         MainControleur.openAdminPanel();
     }
     public void init(boolean admin) {
+        String welcome=" ";
+        if(this.MainControleur.user.getName().equals(""))
+        {
+            welcome="Welcome Guest";
+        }
+        else
+        {
+            welcome="Welcome "+this.MainControleur.user.getFirstname()+" "+this.MainControleur.user.getName();
+        }
+        wellcomeMessage.setText(welcome);
+        sceanceList.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, Insets.EMPTY)));
+        movieToSee.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, Insets.EMPTY)));
         if(admin)
         {
             Button boutton=new Button();
             boutton.setText("Admin");
+            boutton.setStyle("-fx-background-color: #EDD826; -fx-border-color: gray; -fx-border-radius: 5px;");
             boutton.setOnAction(event -> {openAdminPannelWindow();});
+            boutton.setMaxSize(62,27);
             ancorepane.getChildren().add(boutton);
         }
         Cinelist.getItems().add("All Cinema");
@@ -89,7 +104,6 @@ public class HelloCine {
         movieToSee.setCellFactory(param -> new ListCell<String>()
         {
             private final ImageView imageView = new ImageView();
-
             @Override
             public void updateItem(String name, boolean empty)
             {
@@ -98,8 +112,11 @@ public class HelloCine {
                 {
                     setText(null);
                     setGraphic(null);
+                    setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, Insets.EMPTY)));
+
                 } else
                 {
+                    setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, Insets.EMPTY)));
                     String tempName = "";
                     int id=0;
                     if(c.getMovie(name)!=null)

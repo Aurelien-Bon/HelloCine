@@ -12,14 +12,15 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.SubScene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -191,8 +192,10 @@ public class AdminPannelControleur {
                 {
                     setText(null);
                     setGraphic(null);
+                    setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, Insets.EMPTY)));
                 } else
                 {
+                    setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, Insets.EMPTY)));
                     String tempName = "";
                     int id=0;
                     if(name.equals("Add Movie"))
@@ -505,7 +508,7 @@ public class AdminPannelControleur {
     }
 
     public void quitbutton() {
-        MainControleur.HelloCine(true);
+        MainControleur.HelloCine();
     }
 
     public void modifieUser(ActionEvent event) {

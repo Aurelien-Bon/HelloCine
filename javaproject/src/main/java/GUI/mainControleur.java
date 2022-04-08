@@ -48,7 +48,6 @@ public class mainControleur {
         }
         this.Cinemas=new Cinemas();
         this.Cinemas.load();
-        user=new User();
     }
 
     public void openAddMovieComfirm(Movie movie)
@@ -105,7 +104,7 @@ public class mainControleur {
         }
     }
 
-    public void HelloCine(boolean isadmin)
+    public void HelloCine()
     {
         try {
             // Load person overview.
@@ -115,7 +114,7 @@ public class mainControleur {
 
             HelloCine controller = loader.getController();
             controller.setMainApp(this);
-            controller.init(isadmin);
+            controller.init(user.isAdmin());
             // Set person overview into the center of root layout.
             rootLayout.setCenter(personOverview);
             stage.setTitle("HelloCine");
@@ -288,8 +287,36 @@ public class mainControleur {
         }
     }
 
+    public void sendmailConfirme(int nbticket,String sceance,int price,String moviename,String hour ) {
+        try {
+            // Load the fxml file and create a new stage for the popup dialog.
+            FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("sendMail.fxml"));
+            AnchorPane page = loader.load();
+
+            // Create the dialog Stage.
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Send by mail");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            // Set the person into the controller.
+            SendMailControleur controller = loader.getController();
+            controller.setMainApp(this);
+            controller.setDialogStage(dialogStage);
+            controller.init(nbticket, sceance, price, moviename, hour);
+            // Show the dialog and wait until the user closes it
+            dialogStage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public User getUser() {
         return user;
+    }
+
+    public void setUset(User u) {
+        this.user=u;
     }
 }

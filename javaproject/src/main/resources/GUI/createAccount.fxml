@@ -7,7 +7,7 @@
 
 <AnchorPane prefHeight="725.0" prefWidth="1320.0" styleClass="mycreateaccount" stylesheets="@firstStylecss.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.CreateAccountControleur">
    <children>
-      <Label alignment="CENTER" layoutX="429.0" layoutY="148.0" prefHeight="70.0" prefWidth="462.0" text="Create your account" textFill="WHITE">
+      <Label alignment="CENTER" layoutX="429.0" layoutY="133.0" prefHeight="70.0" prefWidth="462.0" text="Create your account" textFill="WHITE">
          <font>
             <Font name="Broadway" size="34.0" />
          </font>
@@ -32,9 +32,6 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <DatePicker fx:id="dateBird" layoutX="446.0" layoutY="566.0" prefHeight="41.0" prefWidth="428.0" promptText="Birthday date :" styleClass="my-textFile" stylesheets="@firstStylecss.css">
-
-      </DatePicker>
       <Button layoutX="446.0" layoutY="629.0" mnemonicParsing="false" onAction="#CreateAccoutButton" prefHeight="31.0" prefWidth="157.0" styleClass="my-button" stylesheets="@firstStylecss.css" text="Create account">
          <font>
             <Font size="18.0" />
@@ -45,7 +42,7 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Label fx:id="errorMessage" alignment="CENTER" layoutX="446.0" layoutY="99.0" prefHeight="38.0" prefWidth="428.0">
+      <Label fx:id="errorMessage" alignment="CENTER" layoutX="446.0" layoutY="191.0" prefHeight="38.0" prefWidth="428.0">
          <font>
             <Font size="18.0" />
          </font>
@@ -55,7 +52,7 @@
             <Image url="@fondcreacompte.PNG" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="585.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="585.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@creacompte.png" />
          </image>

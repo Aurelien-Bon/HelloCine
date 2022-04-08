@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="725.0" prefWidth="1320.0" styleClass="mybackground" stylesheets="@firstStylecss.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.HelloCine">
    <children>
-      <AnchorPane fx:id="ancorepane" layoutX="1258.0" prefHeight="35.0" prefWidth="62.0" />
+      <AnchorPane fx:id="ancorepane" layoutX="1236.0" layoutY="14.0" prefHeight="27.0" prefWidth="62.0" />
       <Label layoutX="140.0" layoutY="54.0" prefHeight="70.0" prefWidth="308.0" text="Films on display:">
          <font>
             <Font name="Berlin Sans FB" size="44.0" />
@@ -47,12 +47,17 @@
             <Image url="@drpeauen.png" />
          </image>
       </ImageView>
-      <Button layoutX="1168.0" layoutY="14.0" mnemonicParsing="false" onAction="#logout" styleClass="my-button" text="Log out" />
+      <Button layoutX="1165.0" layoutY="14.0" mnemonicParsing="false" onAction="#logout" prefHeight="27.0" prefWidth="62.0" styleClass="my-button" text="Log out" />
       <Label fx:id="adressprinter" layoutX="769.0" layoutY="66.0" prefHeight="45.0" prefWidth="399.0">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
       <Label fx:id="movieduration" layoutX="90.0" layoutY="481.0" prefHeight="45.0" prefWidth="204.0" />
+      <Label fx:id="wellcomeMessage" alignment="CENTER_RIGHT" layoutX="779.0" layoutY="14.0" prefHeight="27.0" prefWidth="379.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

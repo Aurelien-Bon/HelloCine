@@ -1,5 +1,6 @@
 package GUI;
 
+import UserGestion.User;
 import UserGestion.mail;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
@@ -28,7 +29,7 @@ public class ConnectionPageControleur {
 
     public void sendPassword()
     {
-        if(mail.getText().replace(" ","").equals("")|| password.getText().replace(" ","").equals(""))
+        if(mail.getText().replace(" ","").equals(""))
         {
             errorMessage.setText("Errore there is no mail adress");
             errorMessage.setStyle("-fx-border-color: gray; -fx-background-color: red;");
@@ -40,15 +41,27 @@ public class ConnectionPageControleur {
             List<List<String>> result=mysqlc.MysqlcgetUser();
             errorMessage.setText("");
             errorMessage.setStyle("-fx-border-color: null; -fx-background-color: null;");
+            boolean cansend=false;
+            String password="";
             for(var elem:result)
             {
                 if(elem.get(1).equals(mail.getText()))
                 {
-                    //m.sendPassword(elem.get(1), elem.get(2));
+                    password=elem.get(2);
+                    cansend=true;
                 }
             }
+            if(cansend)
+            {
+                m.sendPassword(mail.getText(), password);
+                errorMessage.setText("Password send, check your mail!");
+                errorMessage.setStyle("-fx-border-color: gray; -fx-background-color: green;");
+            }
+            else {
+                errorMessage.setText("Errore there is no accont with this mail adress");
+                errorMessage.setStyle("-fx-border-color: gray; -fx-background-color: red;");
+            }
         }
-
     }
 
     public void connectButton() throws InterruptedException {
@@ -64,15 +77,19 @@ public class ConnectionPageControleur {
             Mysqlc  mysqlc = new Mysqlc();
             List<List<String>> result=mysqlc.MysqlcgetUser();
             boolean canConnect=false;
-            boolean isadmin=false;
+            User u = new User();
             for(var elem:result)
             {
                 if(elem.get(1).equals(this.mail.getText())&&elem.get(2).equals(this.password.getText()))
                 {
                     canConnect=true;
+                    u.setMail(elem.get(1));
+                    u.setPassword(elem.get(2));
+                    u.setFirstName(elem.get(4));
+                    u.setName(elem.get(3));
                     if(elem.get(6).equals("1"))
                     {
-                        isadmin=true;
+                        u.setAdmin(true);
                     }
                 }
             }
@@ -83,7 +100,8 @@ public class ConnectionPageControleur {
             }
             else
             {
-                mainControleur.HelloCine(isadmin);
+                this.mainControleur.setUset(u);
+                mainControleur.HelloCine();
             }
         }
     }
@@ -93,6 +111,8 @@ public class ConnectionPageControleur {
     }
 
     public void connectasguestButton() {
-        this.mainControleur.HelloCine(false);
+        User u=new User("","","","");
+        this.mainControleur.setUset(u);
+        this.mainControleur.HelloCine();
     }
 }

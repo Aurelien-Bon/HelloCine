@@ -35,7 +35,7 @@
     -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
 }
 .my-listview{
-    -fx-background-color: #EDD826;
+    -fx-background-color: null;
     -fx-border-color: gray;
     -fx-border-radius: 5px;
 }

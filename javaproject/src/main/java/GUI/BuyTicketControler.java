@@ -63,6 +63,7 @@ public class BuyTicketControler {
             {
                 elem.getSeance().removePlace(1);
             }
+            this.mainControleur.sendmailConfirme(ticketList.size(),ticketList.get(0).getSeance().getSalleName(),ticketList.get(0).getPrice()*ticketList.size(),ticketList.get(0).getSeance().getMouvie().getName(),ticketList.get(0).getSeance().getDay()+" "+ticketList.get(0).getSeance().getHour());
             dialogStage.close();
         }
         else
@@ -76,5 +77,11 @@ public class BuyTicketControler {
 
     public void cancelbutton(ActionEvent event) {
         dialogStage.close();
+    }
+
+
+    public void mailask()
+    {
+
     }
 }
