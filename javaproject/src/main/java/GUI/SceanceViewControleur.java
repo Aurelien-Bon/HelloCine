@@ -69,8 +69,7 @@ public class SceanceViewControleur {
 
         price.textProperty().addListener(new ChangeListener<String>() {
             @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue,
-                                String newValue) {
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
                 if (!newValue.matches("\\d*")) {
                     price.setText(newValue.replaceAll("[^\\d]", ""));
                 }

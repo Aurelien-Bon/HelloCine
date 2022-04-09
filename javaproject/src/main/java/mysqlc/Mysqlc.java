@@ -360,8 +360,7 @@ public class Mysqlc {
                 a.add(rs.getString(3));
                 a.add(rs.getString(4));
                 a.add(rs.getString(5));
-                a.add(rs.getString(6));
-                a.add(Integer.toString(rs.getInt(7)));
+                a.add(Integer.toString(rs.getInt(6)));
                 result.add(a);
             }
             conn.close();

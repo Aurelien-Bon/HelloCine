@@ -20,6 +20,6 @@
          <Font size="15.0" />
       </font></Label>
       <Label fx:id="duration" layoutX="90.0" layoutY="354.0" prefHeight="36.0" prefWidth="124.0" />
-   <WebView fx:id="webView" layoutX="287.0" layoutY="411.0" prefHeight="230.0" prefWidth="450.0" styleClass="my-textFile" stylesheets="@firstStylecss.css" />
+   <WebView fx:id="webView" layoutX="287.0" layoutY="411.0" prefHeight="230.0" prefWidth="450.0" stylesheets="@firstStylecss.css" />
 
 </AnchorPane>

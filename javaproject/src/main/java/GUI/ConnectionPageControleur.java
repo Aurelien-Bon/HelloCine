@@ -87,7 +87,7 @@ public class ConnectionPageControleur {
                     u.setPassword(elem.get(2));
                     u.setFirstName(elem.get(4));
                     u.setName(elem.get(3));
-                    if(elem.get(6).equals("1"))
+                    if(elem.get(5).equals("1"))
                     {
                         u.setAdmin(true);
                     }

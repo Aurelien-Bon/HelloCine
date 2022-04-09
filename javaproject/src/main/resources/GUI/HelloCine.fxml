@@ -15,9 +15,9 @@
             <Font name="Berlin Sans FB" size="44.0" />
          </font>
       </Label>
-      <ListView fx:id="movieToSee" layoutX="90.0" layoutY="126.0" orientation="HORIZONTAL" prefHeight="200.0" prefWidth="1130.0" styleClass="my-listview" stylesheets="@firstStylecss.css" />
+      <ListView fx:id="movieToSee" layoutX="90.0" layoutY="126.0" orientation="HORIZONTAL" prefHeight="200.0" prefWidth="1130.0" style="-fx-border-color: transparant;" styleClass="my-listview" stylesheets="@firstStylecss.css" />
       <ChoiceBox fx:id="Cinelist" layoutX="456.0" layoutY="66.0" prefHeight="45.0" prefWidth="291.0" styleClass="my-textFile" stylesheets="@firstStylecss.css" />
-      <WebView fx:id="trileurView" layoutX="874.0" layoutY="338.0" prefHeight="211.0" prefWidth="346.0" styleClass="my-textFile" stylesheets="@firstStylecss.css" />
+      <WebView fx:id="trileurView" layoutX="874.0" layoutY="338.0" prefHeight="211.0" prefWidth="346.0" stylesheets="@firstStylecss.css" />
       <Label fx:id="overview" alignment="TOP_LEFT" layoutX="87.0" layoutY="344.0" prefHeight="200.0" prefWidth="657.0" styleClass="my-overview" stylesheets="@firstStylecss.css" wrapText="true">
          <font>
             <Font size="14.0" />

@@ -52,7 +52,7 @@
                </children></FlowPane>
             <FlowPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
                <children>
-                  <Label alignment="CENTER" prefHeight="82.0" prefWidth="206.0" styleClass="my-seanceview" stylesheets="@firstStylecss.css" text="Movie:" textAlignment="CENTER">
+                  <Label alignment="CENTER" prefHeight="82.0" prefWidth="206.0" stylesheets="@firstStylecss.css" text="Movie:" textAlignment="CENTER">
                      <font>
                         <Font name="MV Boli" size="18.0" />
                      </font>
