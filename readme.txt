@@ -1,4 +1,4 @@
-HelloCiner projet by Aurélien Bon, Alexandre Bellard, Simon Despiony.
+﻿HelloCine project by Aurélien Bon, Alexandre Bellard, Simon Despinoy.
 
 ============================Install==================================
 
