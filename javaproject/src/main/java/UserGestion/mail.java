@@ -242,7 +242,7 @@ public class mail {
                 "<td>\n" +
                 "<div style=\"color:#000000;font-size:14px;font-family:Arial, Helvetica Neue, Helvetica, sans-serif;font-weight:400;line-height:120%;text-align:left;direction:ltr;letter-spacing:0px;\">\n" +
                 "<p style=\"margin: 0; margin-bottom: 16px;\"><strong>Payment details :</strong></p>\n" +
-                "<p style=\"margin: 0; margin-bottom: 16px;\">We have charged your credit card for the following amount: <strong>£ "+price+"\"</strong>.</p>\n" +
+                "<p style=\"margin: 0; margin-bottom: 16px;\">We have charged your credit card for the following amount: <strong>£ "+price+"</strong>.</p>\n" +
                 "<p style=\"margin: 0; margin-bottom: 16px;\">If you have any further questions about refunds or any other problems, please contact our customer service team who will be happy to help.</p>\n" +
                 "<p style=\"margin: 0;\">You can contact them via the following email address: <strong>hellocine.noreply@gmail.com</strong> Monday to Friday between 9am and 8pm and at weekends between 10am and 6pm.</p>\n" +
                 "</div>\n" +
@@ -323,7 +323,7 @@ public class mail {
                 "</tbody>\n" +
                 "</table>" +
                 "</body>\n" +
-                "</html>";
+                "</html>";///HTML for the mail to send
 
 
 

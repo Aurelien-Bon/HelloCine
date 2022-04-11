@@ -1,13 +1,13 @@
 package GUI;
 
 import MovieGestion.Movie;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.media.*;
-import javafx.scene.web.*;
+import javafx.scene.media.MediaView;
+import javafx.scene.web.WebView;
 
 import java.io.IOException;
 
@@ -27,48 +27,51 @@ public class addMovieComfirmControleur {
     public void setMainApp(mainControleur mainControleur)
     {
         this.mainControleur=mainControleur;
-    }
+    }//get the main app
     @FXML
-    public void openAddMovieWindow(ActionEvent event) throws IOException
+    public void openAddMovieWindow() throws IOException
     {
         mainControleur.openAdminPanel();
     }
 
 
-    public void PressAddBoutton()
+    public void PressAddBoutton()//if the user add the movie
     {
-        Boolean alreadyadd=false;
+        boolean alreadyadd=false;
         for(var elem:this.mainControleur.Cinemas.getCinemas())
         {
             if(elem.getCinemaId()==this.Movie.getCinemaId()) {
                 for (int i = 0; i < elem.getCollection().getMovieList().size(); i++) {
-                    if (elem.getCollection().getMovieList().get(i).getId() == this.Movie.getId()) {
+                    if (elem.getCollection().getMovieList().get(i).getId() == this.Movie.getId()) {//add the movie to the good collection of the cinema
                         alreadyadd = true;
                         break;
                     }
                 }
             }
         }
-        if(!alreadyadd)
+        if(!alreadyadd)//check if the movie was not already in the list
         {
-            for(var elem:this.mainControleur.Cinemas.getCinemas())
+            for(var elem:this.mainControleur.Cinemas.getCinemas())//add it
             {
                 if(elem.getCinemaId()==this.Movie.getCinemaId())
                 {
                        elem.getCollection().addMovie(Movie);
                 }
             }
-            webView.getEngine().load(null);
+            webView.getEngine().load("www.google.com");
             mainControleur.openAdminPanel();
 
         }
         else
         {
-            System.out.println("ERROR FILM ALREADY ADD");
+            Alert a = new Alert(Alert.AlertType.ERROR);//print error
+            a.setTitle("Error film already add");
+            a.setContentText("Error film already add");
+            a.showAndWait();
         }
     }
 
-    public void init(Movie movie)
+    public void init(Movie movie)//get the movie to use
     {
         Movie=movie;
         movieImage.setImage(this.Movie.getMovieImage());

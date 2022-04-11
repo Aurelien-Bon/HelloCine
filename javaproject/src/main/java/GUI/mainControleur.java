@@ -1,33 +1,25 @@
 package GUI;
 
 import HelloCiner.Cinemas;
-import HelloCiner.MovieRoom;
 import HelloCiner.filmshow;
 import MovieGestion.Movie;
 import UserGestion.Ticket;
 import UserGestion.User;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import org.w3c.dom.events.MouseEvent;
 
 import java.io.IOException;
 import java.util.List;
 
 public class mainControleur {
-    public MenuBar menubar;
     @FXML
-    private Menu menu;
     private Stage stage;
-    private Scene scene;
-    private Parent root;
     private BorderPane rootLayout;
     public Cinemas Cinemas;
     public User user;
@@ -37,12 +29,12 @@ public class mainControleur {
         try {
             // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("RootLayout.fxml"));
-            rootLayout = (BorderPane) loader.load();
+            rootLayout = loader.load();
             stage=new Stage();
             // Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout);
             stage.setScene(scene);
-            stage.show();
+            stage.show();//show the sceen
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -53,6 +45,7 @@ public class mainControleur {
     public void openAddMovieComfirm(Movie movie)
     {
         try {
+            // Load the layout from fxml file
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("addMovieComfirm.fxml"));
             AnchorPane addMovie = loader.load();
@@ -71,9 +64,11 @@ public class mainControleur {
     public void openAddMovie(String cinema)
     {
         try {
+            // Load the layout from fxml file
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("addMovie.fxml"));
             AnchorPane addMovie = loader.load();
+            //Load the controller
             addMovieControleur controller = loader.getController();
             controller.setMainApp(this);
             controller.init(cinema);
@@ -89,9 +84,11 @@ public class mainControleur {
     public void openAdminPanel()
     {
         try {
+            // Load the layout from fxml file
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("AdminPannel.fxml"));
             AnchorPane AdminPannel = loader.load();
+            //Load the controller
             AdminPannelControleur controller = loader.getController();
             controller.setMainApp(this);
             controller.init();
@@ -128,7 +125,7 @@ public class mainControleur {
             // Load person overview.
 
             FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("ConnectionPage.fxml"));
-            AnchorPane personOverview = (AnchorPane) loader.load();
+            AnchorPane personOverview = loader.load();
 
             ConnectionPageControleur controller = loader.getController();
             controller.setMainApp(this);
@@ -147,7 +144,7 @@ public class mainControleur {
             // Load person overview.
 
             FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("createAccount.fxml"));
-            AnchorPane personOverview = (AnchorPane) loader.load();
+            AnchorPane personOverview = loader.load();
 
             CreateAccountControleur controller = loader.getController();
             controller.setMainApp(this);

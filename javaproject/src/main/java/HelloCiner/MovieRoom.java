@@ -7,12 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MovieRoom {
-    private String Name;
-    private int capacity;
-    private List<filmshow> movieshow;
-    private int SalleId;
+    private final String Name;
+    private final int capacity;
+    private final List<filmshow> movieshow;
+    private final int SalleId;
 
-    public MovieRoom(String Name,int capacity,int cinemaId)
+    public MovieRoom(String Name,int capacity,int cinemaId)//Constuctor
     {
         this.Name=Name;
         this.capacity=capacity;
@@ -21,7 +21,7 @@ public class MovieRoom {
         movieshow=new ArrayList<>();
     }
 
-    public MovieRoom(int SalleID,String Name,int capacity)
+    public MovieRoom(int SalleID,String Name,int capacity)//Constructor
     {
         this.SalleId=SalleID;
         this.Name=Name;
@@ -29,38 +29,34 @@ public class MovieRoom {
         movieshow=new ArrayList<>();
     }
 
-    public void addMovieShow(filmshow movie) {
-        movieshow.removeIf(elem -> movie.getDay().equals(elem.getDay()) && movie.getHour().equals(elem.getHour()));
+    public void addMovieShow(filmshow movie) {//add a movieshow to the list
+        movieshow.removeIf(elem -> movie.getDay().equals(elem.getDay()) && movie.getHour().equals(elem.getHour()));//check if movieshow dose not existe and delet it if yes
         Mysqlc mysqlc=new Mysqlc();
-        mysqlc.executeQuery("DELETE FROM `filmshow` WHERE `filmshow`.`Day` = \""+movie.getDay()+"\" AND `filmshow`.`Hours` = \""+movie.getHour()+"\" AND `filmshow`.`SalleId` =\""+movie.getSalleId()+"\";");
-        mysqlc.MysqlcfilmShowAdd(movie);
-        this.movieshow.add(movie);
+        mysqlc.executeQuery("DELETE FROM `filmshow` WHERE `filmshow`.`Day` = \""+movie.getDay()+"\" AND `filmshow`.`Hours` = \""+movie.getHour()+"\" AND `filmshow`.`SalleId` =\""+movie.getSalleId()+"\";");//delet it in the database
+        mysqlc.MysqlcfilmShowAdd(movie);//add the new movie show in the database
+        this.movieshow.add(movie);//add it in the object
     }
-    public void removeMovieShow(filmshow movie)
+    public void removeMovieShow(filmshow movie)//remove a filmshow from the list
     {
-        movieshow.removeIf(elem -> movie.getDay().equals(elem.getDay()) && movie.getHour().equals(elem.getHour()));
+        movieshow.removeIf(elem -> movie.getDay().equals(elem.getDay()) && movie.getHour().equals(elem.getHour()));//check if movieshow dose not existe and delet it if yes
         Mysqlc mysqlc=new Mysqlc();
-        mysqlc.executeQuery("DELETE FROM `filmshow` WHERE `filmshow`.`Day` = \""+movie.getDay()+"\" AND `filmshow`.`Hours` = \""+movie.getHour()+"\" AND `filmshow`.`SalleId` =\""+movie.getSalleId()+"\";");
+        mysqlc.executeQuery("DELETE FROM `filmshow` WHERE `filmshow`.`Day` = \""+movie.getDay()+"\" AND `filmshow`.`Hours` = \""+movie.getHour()+"\" AND `filmshow`.`SalleId` =\""+movie.getSalleId()+"\";");//delet it in the database
     }
     public String getName() {
         return Name;
-    }
-
-    public filmshow getMovieShow(int i) {
-        return movieshow.get(i);
-    }
+    }//getter name
 
     public int getCapacity() {
         return capacity;
-    }
+    }//getter capacity
 
-    public void load(Collection c)
+    public void load(Collection c)//load the movie room from the database
     {
         Mysqlc mysqlc=new Mysqlc();
-        List<List<String>> movieShowList=mysqlc.MysqlcfilmShowInfo();
+        List<List<String>> movieShowList=mysqlc.MysqlcfilmShowInfo();//get the data
         for(var elem:movieShowList)
         {
-            if(Integer.parseInt(elem.get(0)) == SalleId)
+            if(Integer.parseInt(elem.get(0)) == SalleId)//add them to the good movie room
             {
                 filmshow fs=new filmshow(elem.get(2),elem.get(3),c.getMovieId(Integer.parseInt(elem.get(1))),Integer.parseInt(elem.get(4)),this.Name,this.SalleId,Integer.parseInt(elem.get(5)));
                 movieshow.add(fs);
@@ -70,35 +66,22 @@ public class MovieRoom {
 
     public List<filmshow> getAllMovieshow() {
         return movieshow;
-    }
-    public filmshow getSpecialMovieShow(String day,int h)
+    }//getter of all film show
+    public filmshow getSpecialMovieShow(String day,int h)//getter of a special movie show with day and hour
     {
-        String hours;
-        switch (h)
-        {
-            case 0:
-                hours="10h";
-                break;
-            case 1:
-                hours="13h";
-                break;
-            case 2:
-                hours="16h";
-                break;
-            case 3:
-                hours="19h";
-                break;
-            case 4:
-                hours="22h";
-                break;
-            default:
-                hours="null";
-        }
+        String hours = switch (h) {//get the hour
+            case 0 -> "10h";
+            case 1 -> "13h";
+            case 2 -> "16h";
+            case 3 -> "19h";
+            case 4 -> "22h";
+            default -> "null";
+        };
         for(var elem:movieshow)
         {
-            if(elem.getHour().equals(hours)&&elem.getDay().equals(day))
+            if(elem.getHour().equals(hours)&&elem.getDay().equals(day))//if they are the same
             {
-                return elem;
+                return elem;//return the good movie show
             }
         }
         return null;
@@ -106,5 +89,5 @@ public class MovieRoom {
 
     public int getId() {
         return SalleId;
-    }
+    }//getter salle id
 }

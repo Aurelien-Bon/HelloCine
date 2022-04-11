@@ -2,15 +2,12 @@ package GUI;
 
 import UserGestion.User;
 import UserGestion.mail;
-import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import mysqlc.Mysqlc;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class ConnectionPageControleur {
     public PasswordField password;
@@ -21,31 +18,31 @@ public class ConnectionPageControleur {
     public  void setMainApp(mainControleur mainControleur)
     {
         this.mainControleur=mainControleur;
-    }
+    }//set the main app
     public void init()
     {
 
     }
 
-    public void sendPassword()
+    public void sendPassword()//if user want to have his password by mail
     {
-        if(mail.getText().replace(" ","").equals(""))
+        if(mail.getText().replace(" ","").equals(""))//check if the mail is give
         {
-            errorMessage.setText("Errore there is no mail adress");
+            errorMessage.setText("Error there is no mail adress");//if not print the message in red
             errorMessage.setStyle("-fx-border-color: gray; -fx-background-color: red;");
         }
         else
         {
             mail m=new mail();
             Mysqlc  mysqlc = new Mysqlc();
-            List<List<String>> result=mysqlc.MysqlcgetUser();
+            List<List<String>> result=mysqlc.MysqlcgetUser();//get all the user
             errorMessage.setText("");
             errorMessage.setStyle("-fx-border-color: null; -fx-background-color: null;");
             boolean cansend=false;
             String password="";
             for(var elem:result)
             {
-                if(elem.get(1).equals(mail.getText()))
+                if(elem.get(1).equals(mail.getText()))//if the mail is associate with an account
                 {
                     password=elem.get(2);
                     cansend=true;
@@ -53,21 +50,21 @@ public class ConnectionPageControleur {
             }
             if(cansend)
             {
-                m.sendPassword(mail.getText(), password);
-                errorMessage.setText("Password send, check your mail!");
+                m.sendPassword(mail.getText(), password);//send the mail to the user
+                errorMessage.setText("Password send, check your mail!");//print succeed message
                 errorMessage.setStyle("-fx-border-color: gray; -fx-background-color: green;");
             }
             else {
-                errorMessage.setText("Errore there is no accont with this mail adress");
+                errorMessage.setText("Error there is no account with this mail address");//printe the error message
                 errorMessage.setStyle("-fx-border-color: gray; -fx-background-color: red;");
             }
         }
     }
 
-    public void connectButton() throws InterruptedException {
-        if(mail.getText().replace(" ","").equals("")|| password.getText().replace(" ","").equals(""))
+    public void connectButton() {//if user want to connect
+        if(mail.getText().replace(" ","").equals("")|| password.getText().replace(" ","").equals(""))//check if mail and password is give
         {
-            errorMessage.setText("Errore there is no mail adress or password");
+            errorMessage.setText("Error there is no mail address or password");//print the error
             errorMessage.setStyle("-fx-border-color: gray; -fx-background-color: red;");
         }
         else
@@ -75,19 +72,19 @@ public class ConnectionPageControleur {
             errorMessage.setText("");
             errorMessage.setStyle("-fx-border-color: null; -fx-background-color: null;");
             Mysqlc  mysqlc = new Mysqlc();
-            List<List<String>> result=mysqlc.MysqlcgetUser();
+            List<List<String>> result=mysqlc.MysqlcgetUser();//get all the user
             boolean canConnect=false;
             User u = new User();
             for(var elem:result)
             {
-                if(elem.get(1).equals(this.mail.getText())&&elem.get(2).equals(this.password.getText()))
+                if(elem.get(1).equals(this.mail.getText())&&elem.get(2).equals(this.password.getText()))//if mail and password match
                 {
-                    canConnect=true;
+                    canConnect=true;//create the user
                     u.setMail(elem.get(1));
                     u.setPassword(elem.get(2));
                     u.setFirstName(elem.get(4));
                     u.setName(elem.get(3));
-                    if(elem.get(5).equals("1"))
+                    if(elem.get(5).equals("1"))//if the user is admin
                     {
                         u.setAdmin(true);
                     }
@@ -95,24 +92,24 @@ public class ConnectionPageControleur {
             }
             if(!canConnect)
             {
-                errorMessage.setText("Wrong password or email address!");
+                errorMessage.setText("Wrong password or email address!");//print the error
                 errorMessage.setStyle("-fx-border-color: gray; -fx-background-color: red;");
             }
             else
             {
-                this.mainControleur.setUset(u);
-                mainControleur.HelloCine();
+                this.mainControleur.setUset(u);//set the user of the app
+                mainControleur.HelloCine();//open the main page
             }
         }
     }
 
     public void CreateAccountButton() {
         this.mainControleur.CreateAccountPage();
-    }
+    }//open the create account page
 
-    public void connectasguestButton() {
+    public void connectasguestButton() {//if user want to connect as a guest
         User u=new User("","","","");
-        this.mainControleur.setUset(u);
-        this.mainControleur.HelloCine();
+        this.mainControleur.setUset(u);//set the user of the app
+        this.mainControleur.HelloCine();//open the main page
     }
 }

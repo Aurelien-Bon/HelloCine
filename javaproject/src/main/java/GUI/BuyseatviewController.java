@@ -2,7 +2,6 @@ package GUI;
 
 import HelloCiner.filmshow;
 import UserGestion.Ticket;
-import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.AnchorPane;
@@ -22,45 +21,43 @@ public class BuyseatviewController {
 
     public void setMainApp(mainControleur mainControleur)
     {
-        this.mainControleur=mainControleur;
+        this.mainControleur=mainControleur;//get the main application controller
     }
     public void init(filmshow filmshow){
-        String title="";
-        FilmeShow.setText(title);
         this.filmshow=filmshow;
-        numbreChose.setText("0");
+        numbreChose.setText("0");//set the number of ticket
     }
 
-    public void addticket() {
+    public void addticket() {///methode use when user clique on the button pay
         List<Ticket> ticketList= new ArrayList<>();
         for(int i=0;i<Integer.parseInt(numbreChose.getText());i++){
             Ticket t=new Ticket(filmshow,filmshow.getPrice());
             ticketList.add(t);
         }
-        mainControleur.OpenBuyTicket(ticketList);
-        dialogStage.close();
+        mainControleur.OpenBuyTicket(ticketList);//open the Buy ticket page
+        dialogStage.close();//close the window
     }
 
     public void cancel() {
         dialogStage.close();
-    }
+    }//close the window
 
     public void setDialogStage(Stage dialogStage)
     {
         this.dialogStage=dialogStage;
-    }
+    }//get the window create
 
     public void increment() {
-        int value=Integer.parseInt(numbreChose.getText());
-        if(value+1<=filmshow.getPlaceTaken())
+        int value=Integer.parseInt(numbreChose.getText());//increment the number of ticket to buy
+        if(value+1<=filmshow.getPlaceTaken())//check if there is the number is not exede the number avalabel
         {
             value++;
         }
         numbreChose.setText(Integer.toString(value));
     }
 
-    public void decrement() {
-        int value=Integer.parseInt(numbreChose.getText());
+    public void decrement() {//decrement the number of ticket to buy
+        int value=Integer.parseInt(numbreChose.getText());//check if there is the number is higher than 0
         if(value-1>=0)
         {
             value--;

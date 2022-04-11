@@ -8,7 +8,7 @@
 
 <AnchorPane prefHeight="725.0" prefWidth="1320.0" styleClass="myconnexionpage" stylesheets="@firstStylecss.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ConnectionPageControleur">
    <children>
-      <TextField fx:id="mail" layoutX="446.0" layoutY="290.0" prefHeight="56.0" prefWidth="428.0" promptText="Mail adress:" styleClass="my-textFile" stylesheets="@firstStylecss.css">
+      <TextField fx:id="mail" layoutX="446.0" layoutY="290.0" prefHeight="56.0" prefWidth="428.0" promptText="Mail address:" styleClass="my-textFile" stylesheets="@firstStylecss.css">
          <font>
             <Font size="18.0" />
          </font>
@@ -18,15 +18,15 @@
                <Font size="18.0" />
            </font>
        </PasswordField>
-      <Button layoutX="446.0" layoutY="522.0" minHeight="50.0" minWidth="200.0" mnemonicParsing="false" onAction="#connectButton" prefHeight="50.0" prefWidth="200.0" styleClass="my-button" stylesheets="@firstStylecss.css" text="Connection">
+      <Button layoutX="446.0" layoutY="522.0" minHeight="50.0" minWidth="200.0" mnemonicParsing="false" onAction="#connectButton" prefHeight="50.0" prefWidth="200.0" styleClass="my-button" stylesheets="@firstStylecss.css" text="Log in">
          <font>
             <Font size="18.0" />
          </font></Button>
-       <Button layoutX="674.0" layoutY="522.0" minHeight="50.0" minWidth="200.0" mnemonicParsing="false" onAction="#CreateAccountButton" prefHeight="50.0" prefWidth="200.0" styleClass="my-button" stylesheets="@firstStylecss.css" text="Create Account">
+       <Button layoutX="674.0" layoutY="522.0" minHeight="50.0" minWidth="200.0" mnemonicParsing="false" onAction="#CreateAccountButton" prefHeight="50.0" prefWidth="200.0" styleClass="my-button" stylesheets="@firstStylecss.css" text="Sign up">
          <font>
             <Font size="18.0" />
          </font></Button>
-       <Button layoutX="446.0" layoutY="598.0" minHeight="50.0" minWidth="200.0" mnemonicParsing="false" onAction="#connectasguestButton" prefHeight="50.0" prefWidth="428.0" styleClass="my-button" stylesheets="@firstStylecss.css" text="Connect as a guest">
+       <Button layoutX="446.0" layoutY="598.0" minHeight="50.0" minWidth="200.0" mnemonicParsing="false" onAction="#connectasguestButton" prefHeight="50.0" prefWidth="428.0" styleClass="my-button" stylesheets="@firstStylecss.css" text="Log as a guest">
          <font>
             <Font size="18.0" />
          </font></Button>

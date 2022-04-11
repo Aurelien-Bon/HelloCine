@@ -26,7 +26,7 @@
                   <Font size="18.0" />
                </font>
             </TextField>
-             <Label alignment="CENTER" prefHeight="50.0" prefWidth="240.0" text="Cinema adress:" textAlignment="CENTER" GridPane.rowIndex="1">
+             <Label alignment="CENTER" prefHeight="50.0" prefWidth="240.0" text="Cinema address:" textAlignment="CENTER" GridPane.rowIndex="1">
                  <font>
                      <Font size="18.0" />
                  </font>

@@ -1,31 +1,22 @@
 package GUI;
 
-import HelloCiner.Cinema;
 import HelloCiner.MovieRoom;
 import HelloCiner.filmshow;
 import MovieGestion.Collection;
-import MovieGestion.Movie;
-import com.sun.mail.imap.Rights;
-import info.movito.themoviedbapi.model.MovieDb;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.SubScene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
-import javafx.scene.layout.*;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 
 public class AdminPannelControleur {
 
@@ -48,18 +39,18 @@ public class AdminPannelControleur {
     public void setMainApp(mainControleur mainControleur)
     {
         this.MainControleur=mainControleur;
-    }
+    }//set the main window
 
-    public void setReload()
+    public void setReload()///methode to reload the pages
     {
-        String cinevalue=cinelist.getValue();
-        cinelist.getItems().clear();
-        for(int i=0;i< this.MainControleur.Cinemas.getCinemas().size();i++)
+        String cinevalue=cinelist.getValue();//get the acctual value
+        cinelist.getItems().clear();//clear the value
+        for(int i=0;i< this.MainControleur.Cinemas.getCinemas().size();i++)//add every cinema
         {
             cinelist.getItems().add(i,this.MainControleur.Cinemas.getCinemas().get(i).getName());
         }
         cinelist.getItems().add("+ Add Cinema");
-        if(cinevalue!="+ Add Cinema")
+        if(!cinevalue.equals("+ Add Cinema"))//set the cinema who was already use
         {
             cinelist.setValue(cinevalue);
         }
@@ -70,54 +61,40 @@ public class AdminPannelControleur {
     }
 
     public void init() {
-        for(int i=0;i< this.MainControleur.Cinemas.getCinemas().size();i++)
+        for(int i=0;i< this.MainControleur.Cinemas.getCinemas().size();i++)//get all the cinema name and add it to the list
         {
             cinelist.getItems().add(i,this.MainControleur.Cinemas.getCinemas().get(i).getName());
         }
-        cinelist.getItems().add("+ Add Cinema");
+        cinelist.getItems().add("+ Add Cinema");//add the cinema
         cinelist.setValue(this.MainControleur.Cinemas.getCinemas().get(0).getName());
     }
 
     private void removeSession(filmshow session) {
-        MainControleur.Cinemas.getCinemaByName(cinelist.getValue()).getMovieRooms(roomList.getValue()).removeMovieShow(session);
+        MainControleur.Cinemas.getCinemaByName(cinelist.getValue()).getMovieRooms(roomList.getValue()).removeMovieShow(session);//remove the session select
         setReload();
     }
 
     private void afficheSession(filmshow session) {
         if(session!=null)
         {
-            MainControleur.OpenSeanceView(session,this);
+            MainControleur.OpenSeanceView(session,this);//open the session select
         }
     }
-    private filmshow createSession(String day,int hour,String salleName,int salleid)
+    private filmshow createSession(String day,int hour,String salleName,int salleid)//create a new session
     {
-        String hours;
-        switch (hour)
-        {
-            case 0:
-                hours="10h";
-                break;
-            case 1:
-                hours="13h";
-                break;
-            case 2:
-                hours="16h";
-                break;
-            case 3:
-                hours="19h";
-                break;
-            case 4:
-                hours="22h";
-                break;
-            default:
-                hours="null";
-        }
-        filmshow session=new filmshow(day,hours,salleName,salleid);
-        return session;
+        String hours = switch (hour) {//get the hour of the session
+            case 0 -> "10h";
+            case 1 -> "13h";
+            case 2 -> "16h";
+            case 3 -> "19h";
+            case 4 -> "22h";
+            default -> "null";
+        };
+        return new filmshow(day,hours,salleName,salleid);//return the session objet create
 
     }
 
-    public void selectCinema()
+    public void selectCinema()//print the cinema information
     {
         try {
             if(!cinelist.getValue().equals("+ Add Cinema"))
@@ -125,46 +102,46 @@ public class AdminPannelControleur {
                 loadCinema();
                 loadMovieRoom();
             }
-            else
+            else//user want to create a new cinema
             {
                 addCinema();
             }
         }catch(Exception e)
         {
-
+            e.printStackTrace();
         }
 
     }
 
     private void addCinema() {
         MainControleur.OpenaddCinema(this);
-    }
+    }//open add cinema window
 
-    public void removeMovie()
+    public void removeMovie()//remove movie
     {
-        MainControleur.Cinemas.getCinemaByName(cinelist.getValue()).getCollection().removeMovieByName(movietoremove);
+        MainControleur.Cinemas.getCinemaByName(cinelist.getValue()).getCollection().removeMovieByName(movietoremove);//get the movie name
         for(var elem:MainControleur.Cinemas.getCinemaByName(cinelist.getValue()).getAllMovieRooms())
         {
             for(var me:elem.getAllMovieshow())
             {
-                if(me.getMouvie().getName().equals(movietoremove))
+                if(me.getMouvie().getName().equals(movietoremove))//remove the movie from the list
                 {
                     removeSession(me);
                 }
             }
         }
-        setReload();
+        setReload();//reload the page
     }
 
     public void loadCinema() {
         ContextMenu contextMenuMovie=new ContextMenu();
 
-        MenuItem menuItem1 = new MenuItem("Remove Movie");
+        MenuItem menuItem1 = new MenuItem("Remove Movie");//create the menu when right clique
         menuItem1.setOnAction(event -> removeMovie());
         contextMenuMovie.getItems().add(menuItem1);
-        listMovie.getSelectionModel().clearSelection();
+        listMovie.getSelectionModel().clearSelection();//clear the list view
         String cine = cinelist.getValue();
-        Collection c=new Collection();
+        Collection c=new Collection();//create a collection
         for(var elem:this.MainControleur.Cinemas.getCinemas())
         {
             if(elem.getName().equals(cine))
@@ -285,7 +262,7 @@ public class AdminPannelControleur {
         contextMenu2.getItems().setAll(menuItem1);
         MenuItem menuItem2 = new MenuItem("Edit session");
         menuItem2.setOnAction(event -> afficheSession(session));
-        MenuItem menuItem3 = new MenuItem("Remouve Session");
+        MenuItem menuItem3 = new MenuItem("Remove Session");
         menuItem3.setOnAction(event -> removeSession(session));
         contextMenu1.getItems().setAll(menuItem2,menuItem3);
 

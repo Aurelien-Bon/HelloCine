@@ -384,7 +384,7 @@ public class Mysqlc {
             // create a connection to the database
             conn = DriverManager.getConnection(url, user, password);
             stmt = conn.createStatement();
-            stmt.executeUpdate("INSERT INTO `user` (`id`, `mail`, `password`, `lastname`, `firstname`, `BirdDate`, `admin`) VALUES (NULL, '"+newUser.get(0)+"', '"+newUser.get(1)+"', '"+newUser.get(2)+"', '"+newUser.get(3)+"','"+newUser.get(4)+"' ,'0');");
+            stmt.executeUpdate("INSERT INTO `user` (`id`, `mail`, `password`, `lastname`, `firstname`, `admin`) VALUES (NULL, '"+newUser.get(0)+"', '"+newUser.get(1)+"', '"+newUser.get(2)+"', '"+newUser.get(3)+"','0');");
             conn.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());

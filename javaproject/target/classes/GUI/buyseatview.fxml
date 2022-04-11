@@ -6,7 +6,7 @@
 
 <AnchorPane fx:id="placeChose" prefHeight="400.0" prefWidth="600.0" styleClass="my-numberticket" stylesheets="@firstStylecss.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.BuyseatviewController">
    <children>
-      <Label fx:id="FilmeShow" alignment="CENTER" contentDisplay="CENTER" layoutX="107.0" layoutY="14.0" prefHeight="53.0" prefWidth="386.0" text="Film show">
+      <Label fx:id="FilmeShow" alignment="CENTER" contentDisplay="CENTER" layoutX="107.0" layoutY="14.0" prefHeight="53.0" prefWidth="386.0">
          <font>
             <Font size="36.0" />
          </font>
@@ -21,7 +21,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Button layoutX="107.0" layoutY="315.0" mnemonicParsing="false" onAction="#addticket" prefHeight="39.0" prefWidth="177.0" styleClass="my-button" stylesheets="@firstStylecss.css" text="Add to basquet">
+      <Button layoutX="107.0" layoutY="315.0" mnemonicParsing="false" onAction="#addticket" prefHeight="39.0" prefWidth="177.0" styleClass="my-button" stylesheets="@firstStylecss.css" text="Add to basket">
          <font>
             <Font size="18.0" />
          </font>
